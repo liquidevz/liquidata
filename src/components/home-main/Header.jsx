@@ -14,8 +14,8 @@ function Header() {
       data-background="/assets/imgs/background/bg5.jpg"
       data-overlay-dark="7"
       style={{
-        background: "#0a0a1a",
-        minHeight: "100vh",
+        background: "#fbbf24",
+        minHeight: "90vh",
         display: "flex",
         alignItems: "center",
         padding: "clamp(5rem, 8vh + 2rem, 12rem) clamp(0.8rem, 3vw + 0.5rem, 60px) clamp(1.5rem, 6vh, 8rem)",
@@ -110,7 +110,7 @@ function Header() {
                   <div>
                     <h1
                       style={{
-                        fontSize: "clamp(1.2rem, 4.5vw + 0.5rem, 4.5rem)",
+                        fontSize: "clamp(1.5rem, 5vw + 0.3rem, 3.5rem)",
                         fontWeight: "800",
                         lineHeight: "clamp(1.05, 0.95 + 0.1vw, 1.1)",
                         marginBottom: "clamp(0.8rem, 2.5vw, 1.5rem)",
@@ -127,7 +127,7 @@ function Header() {
 
                     <h2
                       style={{
-                        fontSize: "clamp(1.2rem, 4vw + 0.5rem, 4.5rem)",
+                        fontSize: "clamp(1.5rem, 4.5vw + 0.3rem, 3.5rem)",
                         fontWeight: "800",
                         color: "#fbbf24",
                         marginBottom: "clamp(1rem, 3vw, 2rem)",
@@ -146,7 +146,7 @@ function Header() {
                       alignItems: "flex-start",
                       justifyContent: "space-between",
                       flexWrap: "wrap",
-                      gap: "clamp(0.8rem, 2.5vw, 1.5rem)",
+                      gap: "clamp(1rem, 3vw, 1.8rem)",
                     }}
                     className="bottom-content"
                   >
@@ -156,19 +156,19 @@ function Header() {
                         alignItems: "center",
                         gap: "clamp(0.6rem, 1.8vw, 1rem)",
                         flex: "1 1 auto",
-                        minWidth: "clamp(180px, 40vw, 220px)",
+                        minWidth: "clamp(200px, 45vw, 280px)",
                       }}
                     >
                       <div
                         style={{
-                          width: "clamp(36px, 6vw + 8px, 48px)",
-                          height: "clamp(36px, 6vw + 8px, 48px)",
+                          width: "clamp(40px, 7vw + 4px, 52px)",
+                          height: "clamp(40px, 7vw + 4px, 52px)",
                           background: "linear-gradient(135deg, #fbbf24, #f59e0b)",
                           borderRadius: "50%",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          fontSize: "clamp(16px, 3vw + 4px, 24px)",
+                          fontSize: "clamp(18px, 4vw + 2px, 26px)",
                           flexShrink: 0,
                         }}
                       >
@@ -177,12 +177,12 @@ function Header() {
                       <div>
                         <p
                           style={{
-                            fontSize: "clamp(0.75rem, 1.5vw + 0.2rem, 1rem)",
+                            fontSize: "clamp(0.85rem, 2vw + 0.1rem, 1.1rem)",
                             opacity: 0.9,
                             margin: 0,
                             lineHeight: "clamp(1.3, 1.2 + 0.2vw, 1.5)",
                             fontWeight: "400",
-                            maxWidth: "200px",
+                            maxWidth: "clamp(180px, 25vw, 250px)",
                           }}
                         >
                           <span style={{ display: "block" }}>12 years of design-driven</span>
@@ -203,15 +203,15 @@ function Header() {
                     >
                       <div
                         style={{
-                          width: "clamp(36px, 6vw + 8px, 48px)",
-                          height: "clamp(36px, 6vw + 8px, 48px)",
+                          width: "clamp(40px, 7vw + 4px, 52px)",
+                          height: "clamp(40px, 7vw + 4px, 52px)",
                           borderRadius: "50%",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
                           color: "#1a1a2e",
                           fontWeight: "bold",
-                          fontSize: "clamp(14px, 2.5vw + 4px, 20px)",
+                          fontSize: "clamp(18px, 4vw + 2px, 26px)",
                         }}
                       >
                         ⚡
@@ -220,11 +220,12 @@ function Header() {
                         text="BOOK A CALL"
                         style={{
                           color: "#1a1a2e",
-                          fontSize: "clamp(0.7rem, 1.5vw + 0.2rem, 1rem)",
-                          padding: "clamp(0.4rem, 1.5vw, 0.75rem) clamp(0.8rem, 2.5vw, 1.5rem)",
+                          fontSize: "clamp(0.8rem, 2vw + 0.1rem, 1.1rem)",
+                          padding: "clamp(0.6rem, 2vw, 1rem) clamp(1rem, 3vw, 2rem)",
                           fontWeight: "600",
                           letterSpacing: "0.025em",
                           whiteSpace: "nowrap",
+                          minHeight: "clamp(40px, 6vw, 48px)",
                         }}
                       />
                     </div>
@@ -388,6 +389,9 @@ function Header() {
     min-height: clamp(350px, 40vh, 420px) !important;
     padding: clamp(1.5rem, 4vw, 2rem) !important;
   }
+
+  .hero-card h1 { font-size: clamp(1.3rem, 6vw, 2.2rem) !important; }
+  .hero-card h2 { font-size: clamp(1.3rem, 6vw, 2.2rem) !important; }
   
   .video-card {
     aspect-ratio: 1/1 !important;
@@ -420,6 +424,8 @@ function Header() {
     min-height: clamp(320px, 38vh, 380px) !important;
     padding: 1.3rem 1rem !important;
   }
+
+  .hero-card h1, .hero-card h2 { font-size: clamp(1.2rem, 7vw, 2rem) !important; }
   
   .video-card {
     min-height: clamp(280px, 32vh, 340px) !important;

@@ -8,7 +8,6 @@ function Navbar() {
   function handleScroll() {
     const bodyScroll = window.scrollY
     const navbar = document.querySelector(".navbar")
-
     if (bodyScroll > 300) navbar?.classList.add("nav-scroll")
     else navbar?.classList.remove("nav-scroll")
   }
@@ -19,33 +18,15 @@ function Navbar() {
   }, [])
 
   useEffect(() => {
-    // Prevent body scroll when menu is open
     if (isMenuOpen) {
       document.body.style.overflow = "hidden"
     } else {
       document.body.style.overflow = ""
     }
-
     return () => {
       document.body.style.overflow = ""
     }
   }, [isMenuOpen])
-
-  function handleDropdownMouseMove(event) {
-    event.currentTarget.querySelector(".dropdown-menu")?.classList.add("show")
-  }
-
-  function handleDropdownMouseLeave(event) {
-    event.currentTarget.querySelector(".dropdown-menu")?.classList.remove("show")
-  }
-
-  function handleToggleNav() {
-    if (document.querySelector(".navbar .navbar-collapse")?.classList.contains("show")) {
-      document.querySelector(".navbar .navbar-collapse")?.classList.remove("show")
-    } else if (!document.querySelector(".navbar .navbar-collapse")?.classList.contains("show")) {
-      document.querySelector(".navbar .navbar-collapse")?.classList.add("show")
-    }
-  }
 
   function toggleMobileMenu() {
     setIsMenuOpen(!isMenuOpen)
@@ -62,12 +43,8 @@ function Navbar() {
           <button
             className="navbar-toggler"
             type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
             onClick={toggleMobileMenu}
+            aria-label="Toggle navigation"
           >
             <span className="icon-bar">
               <i className="fas fa-bars"></i>
@@ -104,7 +81,10 @@ function Navbar() {
             </ul>
           </div>
 
-          <AnimatedButton text="BOOK A CALL" />
+          {/* Desktop-only button */}
+          <div className="d-none d-lg-block">
+            <AnimatedButton text="BOOK A CALL" href="/contact" />
+          </div>
         </div>
       </nav>
 
@@ -127,7 +107,7 @@ function Navbar() {
               </a>
             </li>
             <li>
-              <a href="/portfolio-masonry" className="active" onClick={toggleMobileMenu}>
+              <a href="/portfolio-masonry" onClick={toggleMobileMenu}>
                 OUR WORK
               </a>
             </li>
@@ -147,6 +127,16 @@ function Navbar() {
               </a>
             </li>
           </ul>
+
+          {/* Mobile CTA Button */}
+          <div className="mobile-cta">
+            <AnimatedButton 
+              text="BOOK A CALL" 
+              href="/contact" 
+              onClick={toggleMobileMenu}
+              fullWidth
+            />
+          </div>
 
           <div className="mobile-menu-footer">
             <div className="social-links">
@@ -169,7 +159,6 @@ function Navbar() {
       </div>
 
       <style jsx>{`
-        /* Mobile Menu Overlay Styles */
         .mobile-menu-overlay {
           position: fixed;
           top: 0;
@@ -199,11 +188,9 @@ function Navbar() {
           justify-content: space-between;
           align-items: center;
           padding: 20px 30px;
-          position: relative;
         }
 
         .mobile-logo {
-          display: inline-block;
           max-width: 100px;
         }
 
@@ -219,11 +206,6 @@ function Navbar() {
           font-size: 28px;
           cursor: pointer;
           padding: 10px;
-          transition: opacity 0.3s ease;
-        }
-
-        .mobile-menu-close:hover {
-          opacity: 0.7;
         }
 
         .mobile-menu-content {
@@ -231,7 +213,6 @@ function Navbar() {
           height: calc(100% - 80px);
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
           overflow-y: auto;
         }
 
@@ -248,22 +229,6 @@ function Navbar() {
           animation: fadeInDown 0.5s ease forwards;
         }
 
-        .mobile-nav li:nth-child(1) {
-          animation-delay: 0.1s;
-        }
-        .mobile-nav li:nth-child(2) {
-          animation-delay: 0.2s;
-        }
-        .mobile-nav li:nth-child(3) {
-          animation-delay: 0.3s;
-        }
-        .mobile-nav li:nth-child(4) {
-          animation-delay: 0.4s;
-        }
-        .mobile-nav li:nth-child(5) {
-          animation-delay: 0.5s;
-        }
-
         @keyframes fadeInDown {
           to {
             opacity: 1;
@@ -276,83 +241,50 @@ function Navbar() {
           text-decoration: none;
           font-size: 42px;
           font-weight: 700;
-          letter-spacing: -1px;
-          transition: all 0.3s ease;
-          display: inline-block;
-          position: relative;
+          transition: color 0.3s ease;
         }
 
-        .mobile-nav a.active,
         .mobile-nav a:hover {
           color: #c9fd02;
         }
 
-        .mobile-nav a::after {
-          content: "";
-          position: absolute;
-          bottom: -5px;
-          left: 0;
-          width: 0;
-          height: 3px;
-          background-color: #c9fd02;
-          transition: width 0.3s ease;
-        }
-
-        .mobile-nav a:hover::after {
-          width: 100%;
-        }
-
-        .mobile-menu-footer {
+        .mobile-cta {
+          padding: 30px 0;
           margin-top: auto;
-          padding-top: 30px;
           border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .social-links {
-          margin-bottom: 30px;
-        }
-
-        .social-label {
-          color: #666;
-          font-size: 14px;
-          margin-bottom: 15px;
-          display: block;
+        .mobile-menu-footer {
+          margin-top: 30px;
+          padding-top: 30px;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .social-links a {
           color: #fff;
           text-decoration: none;
-          font-size: 16px;
           display: block;
           margin-bottom: 10px;
-          transition: color 0.3s ease;
-          text-decoration: underline;
         }
 
-        .social-links a:hover {
-          color: #c9fd02;
-        }
-
-        /* Smooth animation for menu items when closing */
-        .mobile-menu-overlay:not(.active) .mobile-nav li {
-          animation: fadeOutUp 0.3s ease forwards;
-        }
-
-        @keyframes fadeOutUp {
-          to {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-        }
-
-        /* Adjust navbar toggler for mobile */
         @media (max-width: 991px) {
           .navbar-collapse {
             display: none !important;
           }
+          
+          .d-lg-block {
+            display: none !important;
+          }
+        }
 
-          .contact-button {
-            display: none;
+        @media (max-width: 480px) {
+          .mobile-nav a {
+            font-size: 32px;
+          }
+          
+          .mobile-cta :global(.btn) {
+            width: 100%;
+            padding: 15px 20px;
           }
         }
       `}</style>
@@ -360,4 +292,4 @@ function Navbar() {
   )
 }
 
-export default Navbar
+export default Navbar;

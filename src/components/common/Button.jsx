@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 
-export default function AnimatedButton({ text, onClick, style }) {
+export default function AnimatedButton({ text, onClick, style, href }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <button
       onClick={onClick}
       style={{
+        href:"",
         background: "#fbbf24",
         color: "#1a1a2e",
         border: "none",

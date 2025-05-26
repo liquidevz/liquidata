@@ -18,7 +18,7 @@ import Marq from '../components/home-main/Marq';
 import WOW from 'wowjs';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// import { ScrollSmoother } from '';
+// import { ScrollSmoother } from 'gsap-trial/ScrollSmoother';
 
 import { useGSAP } from '@gsap/react';
 import { useEffect, useRef } from 'react';
@@ -29,43 +29,7 @@ export default function Home() {
   const smoother = useRef();
 
   useEffect(() => {
-    const loadScript = (src) => {
-      return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = src;
-        script.async = true;
-
-        script.onload = () => {
-          resolve(true);
-        };
-
-        script.onerror = () => {
-          reject(new Error(`Failed to load ${src}`));
-        };
-
-        document.body.appendChild(script);
-      });
-    };
-
-    // Load ScrollSmoother.min.js first
-    loadScript('/assets/js/gsap.min.js')
-      .then(() => {
-        loadScript('/assets/js/ScrollSmoother.min.js');
-      })
-      .then(() => {
-        // Once ScrollSmoother.min.js is loaded, load smoother-script.js
-        return loadScript('/assets/js/smoother-script.js');
-      })
-      .catch((error) => {
-        console.error(error.message);
-      });
-
-    // // Cleanup function
-    // return () => {
-    //   document.body.removeChild(script);
-    // };
-  }, []);
-  useEffect(() => {
+    // Initialize WOW.js animations
     if (typeof window !== 'undefined') {
       new WOW.WOW({
         animateClass: 'animated',
@@ -73,6 +37,7 @@ export default function Home() {
       }).init();
     }
   }, []);
+
   return (
     <>
       <Helmet>
@@ -92,15 +57,20 @@ export default function Home() {
           type="text/css"
           href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap"
         />
-        <script src="/assets/js/ScrollTrigger.min.js" defer />
-        <script src="/assets/js/ScrollSmoother.min.js" defer />
-        <script defer src="/assets/js/gsap.min.js"></script>
-        <script defer src="/assets/js/splitting.min.js"></script>
-        <script defer src="/assets/js/isotope.pkgd.min.js"></script>
-        <script defer src="/assets/js/plugins.js"></script>
-        <script defer src="/assets/js/TweenMax.min.js"></script>
-        <script defer src="/assets/js/charming.min.js"></script>
-        <script defer src="/assets/js/countdown.js"></script>
+        
+        {/* Load GSAP and related scripts in the correct order */}
+        <script src="/assets/js/gsap.min.js" />
+        <script src="/assets/js/ScrollTrigger.min.js" />
+        <script src="/assets/js/ScrollSmoother.min.js" />
+        <script src="/assets/js/smoother-script.js" />
+        
+        {/* Load other scripts after GSAP */}
+        <script src="/assets/js/splitting.min.js" defer />
+        <script src="/assets/js/isotope.pkgd.min.js" defer />
+        <script src="/assets/js/plugins.js" defer />
+        <script src="/assets/js/TweenMax.min.js" defer />
+        <script src="/assets/js/charming.min.js" defer />
+        <script src="/assets/js/countdown.js" defer />
       </Helmet>
       <body>
         <LoadingScreen />

@@ -1,26 +1,34 @@
 [
   {
-    "img": "/assets/imgs/testim/t1.jpg",
+    "image": "/assets/imgs/testim/t1.jpg",
     "name": "Ahmed",
-    "subName": "Founder & CEO",
-    "desc": "I have been hiring people in this space for a number of years and I have never seen this level of professionalism. It really feels like you are working  with a team that can get the job done"
+    "position": "Founder & CEO",
+    "company": "TechCorp",
+    "testimonial": "I have been hiring people in this space for a number of years and I have never seen this level of professionalism. It really feels like you are working  with a team that can get the job done",
+    "rating": 5
   },
   {
-    "img": "/assets/imgs/testim/t2.jpg",
+    "image": "/assets/imgs/testim/t2.jpg",
     "name": "Adam Beckley",
-    "subName": "Founder & CEO",
-    "desc": "I have been hiring people in this space for a number of years and I have never seen this level of professionalism. It really feels like you are working  with a team that can get the job done"
+    "position": "Founder & CEO",
+    "company": "InnovateTech",
+    "testimonial": "I have been hiring people in this space for a number of years and I have never seen this level of professionalism. It really feels like you are working  with a team that can get the job done",
+    "rating": 5
   },
   {
-    "img": "/assets/imgs/testim/t3.jpg",
+    "image": "/assets/imgs/testim/t3.jpg",
     "name": "Adam Beckley",
-    "subName": "Founder & CEO",
-    "desc": "I have been hiring people in this space for a number of years and I have never seen this level of professionalism. It really feels like you are working  with a team that can get the job done"
+    "position": "Founder & CEO",
+    "company": "DigitalSolutions",
+    "testimonial": "I have been hiring people in this space for a number of years and I have never seen this level of professionalism. It really feels like you are working  with a team that can get the job done",
+    "rating": 5
   },
   {
-    "img": "/assets/imgs/testim/t4.jpg",
+    "image": "/assets/imgs/testim/t4.jpg",
     "name": "Adam Beckley",
-    "subName": "Founder & CEO",
-    "desc": "I have been hiring people in this space for a number of years and I have never seen this level of professionalism. It really feels like you are working  with a team that can get the job done"
+    "position": "Founder & CEO",
+    "company": "WebInnovate",
+    "testimonial": "I have been hiring people in this space for a number of years and I have never seen this level of professionalism. It really feels like you are working  with a team that can get the job done",
+    "rating": 5
   }
 ]

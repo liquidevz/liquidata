@@ -11,12 +11,14 @@ import PageContact from './pages/contact.js';
 import PageServices from './pages/services.js';
 import PortfolioCreativeCarousel from './pages/works.js';
 import ProjectDetails from './pages/project-details.js';
+import AdminPanel from './pages/admin';
 import gsap from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // import { ScrollSmoother } from 'gsap-trial/ScrollSmoother';
 
-// gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 // gsap.config({ trialWarn: false });
+
 function App() {
   return (
     <Router>
@@ -36,6 +38,7 @@ function App() {
           element={<PortfolioCreativeCarousel />}
         />
         <Route path="/project-details" element={<ProjectDetails />} />
+        <Route path="/admin" element={<AdminPanel />} />
 
         {/*        
         {/*

@@ -1,17 +1,35 @@
 [
   {
-    "img": "/assets/imgs/team/1.jpg",
+    "imageUrl": "/assets/imgs/team/1.jpg",
     "name": "Robert De Niro",
-    "subName": "Web Developer"
+    "position": "Web Developer",
+    "socialLinks": {
+      "facebook": "",
+      "twitter": "",
+      "instagram": "",
+      "linkedin": ""
+    }
   },
   {
-    "img": "/assets/imgs/team/2.jpg",
+    "imageUrl": "/assets/imgs/team/2.jpg",
     "name": "Brendan Fraser",
-    "subName": "UI/UX Designer"
+    "position": "UI/UX Designer",
+    "socialLinks": {
+      "facebook": "",
+      "twitter": "",
+      "instagram": "",
+      "linkedin": ""
+    }
   },
   {
-    "img": "/assets/imgs/team/3.jpg",
+    "imageUrl": "/assets/imgs/team/3.jpg",
     "name": "Ahmed Khaled",
-    "subName": "Web Designer"
+    "position": "Web Designer",
+    "socialLinks": {
+      "facebook": "",
+      "twitter": "",
+      "instagram": "",
+      "linkedin": ""
+    }
   }
 ]
