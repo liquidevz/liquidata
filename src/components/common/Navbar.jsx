@@ -1,5 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
+import AnimatedButton from "./Button"
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -103,11 +104,7 @@ function Navbar() {
             </ul>
           </div>
 
-          <div className="contact-button">
-            <a href="/contact" className="butn butn-sm butn-bg main-colorbg radius-5">
-              <span className="text">Let&apos;s contact</span>
-            </a>
-          </div>
+          <AnimatedButton text="BOOK A CALL" />
         </div>
       </nav>
 

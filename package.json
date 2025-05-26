@@ -4,9 +4,11 @@
   "private": true,
   "dependencies": {
     "@gsap/react": "^2.1.0",
+    "@tailwindcss/forms": "^0.5.10",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.9.0",
     "Babel": "^0.0.1",
     "gsap": "^3.12.5",
     "imagesloaded": "^5.0.0",
@@ -47,7 +49,10 @@
     ]
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.21",
     "babel-plugin-module-resolver": "^5.0.0",
-    "react-app-rewired": "^2.2.1"
+    "postcss": "^8.5.3",
+    "react-app-rewired": "^2.2.1",
+    "tailwindcss": "^4.1.7"
   }
 }

@@ -8,7 +8,7 @@ import Error from '../components/page-404/Error';
 import WOW from 'wowjs';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// import { ScrollSmoother } from 'gsap-trial/ScrollSmoother';
+// import { ScrollSmoother } from '';
 
 import { useGSAP } from '@gsap/react';
 import { useEffect } from 'react';

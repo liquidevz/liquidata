@@ -1,6 +1,6 @@
 "use client"
 import { useEffect } from "react"
-
+import AnimatedButton from "../common/Button"
 import loadBackgroudImages from "../../common/loadBackgroudImages"
 
 function Header() {
@@ -18,7 +18,7 @@ function Header() {
         minHeight: "100vh",
         display: "flex",
         alignItems: "center",
-        padding: "12rem 60px 8rem 60px",
+        padding: "clamp(5rem, 8vh + 2rem, 12rem) clamp(0.8rem, 3vw + 0.5rem, 60px) clamp(1.5rem, 6vh, 8rem)",
         position: "relative",
       }}
     >
@@ -29,7 +29,8 @@ function Header() {
           zIndex: 10,
           maxWidth: "1400px",
           margin: "0 auto",
-          padding: "0 2rem",
+          padding: "0 clamp(0.8rem, 2.5vw, 2rem)",
+          width: "100%",
         }}
       >
         <div className="row" style={{ margin: 0 }}>
@@ -38,8 +39,8 @@ function Header() {
               className="caption"
               style={{
                 display: "grid",
-                gridTemplateColumns: "1.8fr 1fr",
-                gap: "2rem",
+                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 400px), 1fr))",
+                gap: "clamp(0.8rem, 2.5vw, 2rem)",
                 alignItems: "stretch",
                 maxWidth: "1400px",
                 margin: "0 auto",
@@ -49,19 +50,20 @@ function Header() {
               <div
                 style={{
                   position: "relative",
-                  borderRadius: "24px",
-                  padding: "3rem 2.5rem",
+                  borderRadius: "clamp(16px, 3vw, 24px)",
+                  padding: "clamp(1.5rem, 4vw + 0.5rem, 3rem) clamp(1.2rem, 3.5vw, 2.5rem)",
                   color: "white",
                   overflow: "hidden",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
-                  minHeight: "400px",
-                  aspectRatio: "16/9",
+                  minHeight: "clamp(350px, 50vh, 500px)",
+                  aspectRatio: "16/10",
                   maxWidth: "100%",
-                  // Use a solid background as fallback
                   background: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%)",
+                  gridColumn: "1 / -1",
                 }}
+                className="hero-card"
               >
                 {/* Background image overlay with proper clipping */}
                 <div
@@ -75,7 +77,7 @@ function Header() {
                       "url(https://hebbkx1anhila5yf.public.blob.vercel-storage.com/HaloLAb-2n1awCgam1vSwkhx8AkESxXHMBCcGl.png)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
-                    borderRadius: "24px",
+                    borderRadius: "clamp(16px, 3vw, 24px)",
                     zIndex: 1,
                   }}
                 />
@@ -95,11 +97,11 @@ function Header() {
                   <div
                     style={{
                       position: "absolute",
-                      top: "-1.5rem",
+                      top: "clamp(-0.8rem, -1.5vw, -1.5rem)",
                       left: "50%",
                       transform: "translateX(-50%)",
-                      width: "8px",
-                      height: "8px",
+                      width: "clamp(5px, 1.2vw + 1px, 8px)",
+                      height: "clamp(5px, 1.2vw + 1px, 8px)",
                       background: "#fbbf24",
                       borderRadius: "50%",
                     }}
@@ -108,29 +110,30 @@ function Header() {
                   <div>
                     <h1
                       style={{
-                        fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
+                        fontSize: "clamp(1.2rem, 4.5vw + 0.5rem, 4.5rem)",
                         fontWeight: "800",
-                        lineHeight: "1.1",
-                        marginBottom: "1.5rem",
-                        letterSpacing: "-0.02em",
+                        lineHeight: "clamp(1.05, 0.95 + 0.1vw, 1.1)",
+                        marginBottom: "clamp(0.8rem, 2.5vw, 1.5rem)",
+                        letterSpacing: "clamp(-0.01em, -0.02em, -0.02em)",
                         textTransform: "uppercase",
+                        wordBreak: "break-word",
+                        hyphens: "auto",
                       }}
                     >
-                      DESIGN & TECH
-                      <br />
-                      AGENCY HELPING
-                      <br />
-                      BRANDS BECOME
+                      <span style={{ display: "block" }}>DESIGN & TECH</span>
+                      <span style={{ display: "block" }}>AGENCY HELPING</span>
+                      <span style={{ display: "block" }}>BRANDS BECOME</span>
                     </h1>
 
                     <h2
                       style={{
-                        fontSize: "clamp(2rem, 4vw, 4.5rem)",
+                        fontSize: "clamp(1.2rem, 4vw + 0.5rem, 4.5rem)",
                         fontWeight: "800",
                         color: "#fbbf24",
-                        marginBottom: "2rem",
-                        letterSpacing: "-0.02em",
+                        marginBottom: "clamp(1rem, 3vw, 2rem)",
+                        letterSpacing: "clamp(-0.01em, -0.02em, -0.02em)",
                         textTransform: "uppercase",
+                        lineHeight: "1",
                       }}
                     >
                       TOP 1%
@@ -140,23 +143,33 @@ function Header() {
                   <div
                     style={{
                       display: "flex",
-                      alignItems: "center",
+                      alignItems: "flex-start",
                       justifyContent: "space-between",
                       flexWrap: "wrap",
-                      gap: "1rem",
+                      gap: "clamp(0.8rem, 2.5vw, 1.5rem)",
                     }}
+                    className="bottom-content"
                   >
-                    <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "clamp(0.6rem, 1.8vw, 1rem)",
+                        flex: "1 1 auto",
+                        minWidth: "clamp(180px, 40vw, 220px)",
+                      }}
+                    >
                       <div
                         style={{
-                          width: "48px",
-                          height: "48px",
+                          width: "clamp(36px, 6vw + 8px, 48px)",
+                          height: "clamp(36px, 6vw + 8px, 48px)",
                           background: "linear-gradient(135deg, #fbbf24, #f59e0b)",
                           borderRadius: "50%",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          fontSize: "24px",
+                          fontSize: "clamp(16px, 3vw + 4px, 24px)",
+                          flexShrink: 0,
                         }}
                       >
                         🔥
@@ -164,16 +177,16 @@ function Header() {
                       <div>
                         <p
                           style={{
-                            fontSize: "clamp(0.9rem, 1.2vw, 1rem)",
+                            fontSize: "clamp(0.75rem, 1.5vw + 0.2rem, 1rem)",
                             opacity: 0.9,
                             margin: 0,
-                            lineHeight: "1.4",
+                            lineHeight: "clamp(1.3, 1.2 + 0.2vw, 1.5)",
                             fontWeight: "400",
+                            maxWidth: "200px",
                           }}
                         >
-                          12 years of design-driven
-                          <br />
-                          development for B2B products
+                          <span style={{ display: "block" }}>12 years of design-driven</span>
+                          <span style={{ display: "block" }}>development for B2B products</span>
                         </p>
                       </div>
                     </div>
@@ -182,53 +195,38 @@ function Header() {
                       style={{
                         display: "flex",
                         alignItems: "center",
-                        gap: "1rem",
+                        gap: "clamp(0.6rem, 1.8vw, 1rem)",
                         flexShrink: 0,
                         width: "auto",
                       }}
+                      className="cta-section"
                     >
                       <div
                         style={{
-                          width: "48px",
-                          height: "48px",
-                          background: "#ffffff",
+                          width: "clamp(36px, 6vw + 8px, 48px)",
+                          height: "clamp(36px, 6vw + 8px, 48px)",
                           borderRadius: "50%",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
                           color: "#1a1a2e",
                           fontWeight: "bold",
-                          fontSize: "20px",
+                          fontSize: "clamp(14px, 2.5vw + 4px, 20px)",
                         }}
                       >
                         ⚡
                       </div>
-                      <button
+                      <AnimatedButton
+                        text="BOOK A CALL"
                         style={{
-                          background: "#fbbf24",
                           color: "#1a1a2e",
-                          border: "none",
-                          padding: "14px 28px",
-                          borderRadius: "25px",
-                          fontWeight: "700",
-                          fontSize: "clamp(0.85rem, 1vw, 0.95rem)",
-                          cursor: "pointer",
-                          transition: "all 0.3s ease",
-                          textTransform: "uppercase",
-                          letterSpacing: "0.5px",
+                          fontSize: "clamp(0.7rem, 1.5vw + 0.2rem, 1rem)",
+                          padding: "clamp(0.4rem, 1.5vw, 0.75rem) clamp(0.8rem, 2.5vw, 1.5rem)",
+                          fontWeight: "600",
+                          letterSpacing: "0.025em",
                           whiteSpace: "nowrap",
                         }}
-                        onMouseEnter={(e) => {
-                          e.target.style.background = "#f59e0b"
-                          e.target.style.transform = "translateY(-2px)"
-                        }}
-                        onMouseLeave={(e) => {
-                          e.target.style.background = "#fbbf24"
-                          e.target.style.transform = "translateY(0)"
-                        }}
-                      >
-                        BOOK A CALL
-                      </button>
+                      />
                     </div>
                   </div>
                 </div>
@@ -238,189 +236,18 @@ function Header() {
               <div
                 style={{
                   background: "#f8fafc",
-                  borderRadius: "24px",
+                  borderRadius: "clamp(16px, 3vw, 24px)",
                   position: "relative",
                   overflow: "hidden",
                   display: "flex",
                   flexDirection: "column",
-                  minHeight: "400px",
-                  padding: "1.5rem",
-                  aspectRatio: "3/4",
+                  minHeight: "clamp(300px, 40vh, 500px)",
+                  padding: "clamp(0.8rem, 2.5vw, 1.5rem)",
+                  aspectRatio: "4/5",
+                  gridColumn: "1 / -1",
                 }}
+                className="video-card"
               >
-                {/* Header with close button */}
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    marginBottom: "1rem",
-                  }}
-                >
-                  <div
-                    style={{
-                      background: "#1f2937",
-                      color: "white",
-                      padding: "8px 16px",
-                      borderRadius: "20px",
-                      fontSize: "12px",
-                      fontWeight: "600",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: "8px",
-                        height: "8px",
-                        background: "#10b981",
-                        borderRadius: "50%",
-                      }}
-                    ></div>
-                    AGRINEX
-                    <div style={{ fontSize: "16px", marginLeft: "auto" }}>☰</div>
-                  </div>
-                </div>
-
-                {/* Plot info */}
-                <div style={{ marginBottom: "1rem" }}>
-                  <p style={{ fontSize: "12px", color: "#6b7280", margin: "0 0 4px 0" }}>Plot of land is AESS</p>
-                </div>
-
-                {/* Soil analysis section */}
-                <div
-                  style={{
-                    background: "#d4a574",
-                    borderRadius: "12px",
-                    padding: "1rem",
-                    marginBottom: "1rem",
-                    position: "relative",
-                    minHeight: "120px",
-                  }}
-                >
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "8px",
-                      right: "8px",
-                      background: "#ef4444",
-                      color: "white",
-                      padding: "4px 8px",
-                      borderRadius: "12px",
-                      fontSize: "10px",
-                      fontWeight: "600",
-                    }}
-                  >
-                    CRITICAL
-                  </div>
-                  <p style={{ fontSize: "12px", color: "#8b5a2b", margin: "0 0 8px 0", fontWeight: "600" }}>
-                    Soil analysis
-                  </p>
-                  <div
-                    style={{
-                      position: "absolute",
-                      bottom: "1rem",
-                      right: "1rem",
-                      width: "40px",
-                      height: "40px",
-                      background: "rgba(255,255,255,0.9)",
-                      borderRadius: "50%",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: 0,
-                        height: 0,
-                        borderLeft: "8px solid #d4a574",
-                        borderTop: "5px solid transparent",
-                        borderBottom: "5px solid transparent",
-                        marginLeft: "2px",
-                      }}
-                    ></div>
-                  </div>
-                </div>
-
-                {/* Nutrients section */}
-                <div style={{ marginBottom: "1rem" }}>
-                  <h4 style={{ fontSize: "14px", fontWeight: "600", color: "#1f2937", margin: "0 0 12px 0" }}>
-                    Nutrients level
-                  </h4>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                    {[
-                      { name: "Magn.", value: "58%", color: "#10b981" },
-                      { name: "Acidity", value: "68-75", color: "#3b82f6" },
-                      { name: "Phosphorus", value: "240-430", color: "#8b5cf6" },
-                      { name: "Potassium", value: "70-280", color: "#10b981" },
-                      { name: "Organic carbon", value: "68-75", color: "#ef4444" },
-                    ].map((nutrient, index) => (
-                      <div
-                        key={index}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "8px",
-                          fontSize: "11px",
-                        }}
-                      >
-                        <div
-                          style={{
-                            width: "16px",
-                            height: "16px",
-                            background: nutrient.color,
-                            borderRadius: "50%",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            color: "white",
-                            fontSize: "8px",
-                            fontWeight: "600",
-                          }}
-                        >
-                          {nutrient.name.charAt(0)}
-                        </div>
-                        <span style={{ color: "#374151", fontWeight: "500", flex: 1 }}>{nutrient.name}</span>
-                        <span style={{ color: "#6b7280" }}>{nutrient.value}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Soil moisture levels */}
-                <div>
-                  <h4 style={{ fontSize: "12px", fontWeight: "600", color: "#1f2937", margin: "0 0 8px 0" }}>
-                    Soil moisture levels
-                  </h4>
-                  <div
-                    style={{
-                      background: "#1f2937",
-                      borderRadius: "8px",
-                      padding: "8px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                    }}
-                  >
-                    <span style={{ color: "white", fontSize: "10px" }}>20-30%</span>
-                    <div style={{ display: "flex", gap: "4px" }}>
-                      {[1, 2, 3, 4, 5].map((i) => (
-                        <div
-                          key={i}
-                          style={{
-                            width: "4px",
-                            height: "16px",
-                            background: i <= 3 ? "#10b981" : "#374151",
-                            borderRadius: "2px",
-                          }}
-                        ></div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
                 {/* Video overlay for actual video */}
                 <video
                   autoPlay
@@ -434,12 +261,15 @@ function Header() {
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
-                    borderRadius: "24px",
+                    borderRadius: "clamp(16px, 3vw, 24px)",
                     zIndex: 1,
-                    opacity: 0, // Hidden by default, will show when video loads
+                    opacity: 1,
                   }}
                 >
-                  <source src="/assets/videos/hero-video.mp4" type="video/mp4" />
+                  <source
+                    src="https://elasticbeanstalk-ap-south-1-954976323838.s3.ap-south-1.amazonaws.com/varun/1.mp4"
+                    type="video/mp4"
+                  />
                 </video>
               </div>
             </div>
@@ -448,154 +278,186 @@ function Header() {
       </div>
 
       <style jsx>{`
-  /* Account for fixed navbar */
+        /* Base responsive styles */
+        header {
+          padding-top: clamp(90px, 15vh, 120px) !important;
+        }
+
+/* Large Desktop and above - maintain original two-column layout */
+@media (min-width: 1025px) {
+  .caption {
+    grid-template-columns: 1.8fr 1fr !important;
+    gap: 2rem !important;
+  }
+  
+  .hero-card {
+    grid-column: 1 !important;
+    aspect-ratio: 4/3 !important;
+  }
+  
+  .video-card {
+    grid-column: 2 !important;
+    aspect-ratio: 3/4 !important;
+  }
+}
+
+/* Below 1025px - Single column stacked layout as shown in image */
+@media (max-width: 1024px) {
   header {
-    padding-top: 120px !important;
-  }
-
-  /* Desktop - maintain exact original design */
-  @media (min-width: 1025px) {
-    .caption {
-      grid-template-columns: 1.8fr 1fr !important;
-      gap: 2rem !important;
-    }
-  }
-
-  /* Tablet and Mobile - stack vertically with proper heights */
-  @media (max-width: 1024px) {
-    header {
-      padding: 8rem 20px 4rem 20px !important;
-      min-height: auto !important;
-    }
-    
-    .container {
-      padding: 0 1rem !important;
-    }
-    
-    .caption {
-      grid-template-columns: 1fr !important;
-      gap: 1.5rem !important;
-      max-width: 600px !important;
-      margin: 0 auto !important;
-    }
-    
-    .caption > div:first-child {
-      aspect-ratio: unset !important;
-      padding: 2.5rem 2rem !important;
-      min-height: 450px !important;
-      height: auto !important;
-      width: 100% !important;
-    }
-    
-    .caption > div:last-child {
-      aspect-ratio: unset !important;
-      min-height: 500px !important;
-      height: auto !important;
-      padding: 1.5rem !important;
-      width: 100% !important;
-    }
+    padding: clamp(6rem, 8vh, 9rem) clamp(1rem, 3vw, 2.5rem) clamp(3rem, 5vh, 4rem) !important;
+    min-height: auto !important;
   }
   
-  /* Mobile Portrait */
-  @media (max-width: 768px) {
-    header {
-      padding: 7rem 15px 3rem 15px !important;
-    }
-
-    header {
-      padding-top: 100px !important;
-    }
-    
-    .caption {
-      gap: 1.2rem !important;
-      max-width: 500px !important;
-    }
-    
-    .caption > div:first-child {
-      padding: 2rem 1.5rem !important;
-      min-height: 420px !important;
-    }
-    
-    .caption > div:first-child > div:last-child {
-      flex-direction: column !important;
-      align-items: flex-start !important;
-      gap: 1.5rem !important;
-    }
-    
-    .caption > div:last-child {
-      padding: 1.3rem !important;
-      min-height: 480px !important;
-    }
+  .caption {
+    grid-template-columns: 1fr !important;
+    gap: clamp(1.2rem, 3vw, 2rem) !important;
+    max-width: 800px !important;
   }
   
-  /* Small Mobile */
-  @media (max-width: 480px) {
-    header {
-      padding: 6rem 10px 2.5rem 10px !important;
-    }
-
-    header {
-      padding-top: 90px !important;
-    }
-    
-    .caption {
-      max-width: 400px !important;
-      gap: 1rem !important;
-    }
-    
-    .caption > div:first-child {
-      padding: 1.8rem 1.2rem !important;
-      min-height: 400px !important;
-    }
-    
-    .caption > div:last-child {
-      padding: 1.2rem !important;
-      min-height: 450px !important;
-    }
+  .hero-card {
+    grid-column: 1 / -1 !important;
+    aspect-ratio: 16/9 !important;
+    min-height: clamp(400px, 50vh, 500px) !important;
+    padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem) !important;
   }
   
-  /* Extra Small Mobile */
-  @media (max-width: 360px) {
-    header {
-      padding: 5.5rem 10px 2rem 10px !important;
-    }
-    .caption {
-      max-width: 340px !important;
-    }
-    
-    .caption > div:first-child {
-      padding: 1.5rem 1rem !important;
-      min-height: 380px !important;
-    }
-    
-    .caption > div:last-child {
-      padding: 1rem !important;
-      min-height: 420px !important;
-    }
+  .video-card {
+    grid-column: 1 / -1 !important;
+    aspect-ratio: 16/10 !important;
+    min-height: clamp(350px, 40vh, 450px) !important;
   }
+  
+  /* Keep bottom content horizontal on larger tablets */
+  .bottom-content {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: clamp(1rem, 2.5vw, 1.5rem) !important;
+  }
+}
 
-/* Force perfect border radius on purple card */
-.caption > div:first-child {
-  border-radius: 24px !important;
+/* Tablet Portrait - adjust spacing and sizing */
+@media (max-width: 768px) {
+  header {
+    padding: clamp(5.5rem, 7vh, 8rem) clamp(1rem, 3vw, 2rem) clamp(2.5rem, 4vh, 3.5rem) !important;
+  }
+  
+  .caption {
+    max-width: 600px !important;
+    gap: 1.5rem !important;
+  }
+  
+  .hero-card {
+    aspect-ratio: 16/10 !important;
+    min-height: clamp(380px, 45vh, 450px) !important;
+    padding: clamp(1.8rem, 3.5vw, 2.5rem) clamp(1.3rem, 2.5vw, 2rem) !important;
+  }
+  
+  .video-card {
+    aspect-ratio: 16/11 !important;
+    min-height: clamp(320px, 35vh, 400px) !important;
+  }
+  
+  /* Stack bottom content vertically on smaller tablets */
+  .bottom-content {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1.5rem !important;
+  }
+  
+  .cta-section {
+    align-self: stretch !important;
+    justify-content: center !important;
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) {
+  header {
+    padding: clamp(5rem, 7vh, 7rem) clamp(0.8rem, 3vw, 1.5rem) clamp(2rem, 3vh, 3rem) !important;
+  }
+  
+  .caption {
+    max-width: 100% !important;
+    gap: 1.2rem !important;
+    padding: 0 0.5rem !important;
+  }
+  
+  .hero-card {
+    aspect-ratio: 1/1 !important;
+    min-height: clamp(350px, 40vh, 420px) !important;
+    padding: clamp(1.5rem, 4vw, 2rem) !important;
+  }
+  
+  .video-card {
+    aspect-ratio: 1/1 !important;
+    min-height: clamp(300px, 35vh, 380px) !important;
+  }
+  
+  .bottom-content {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1.3rem !important;
+  }
+  
+  .cta-section {
+    align-self: stretch !important;
+    justify-content: center !important;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+  header {
+    padding: clamp(4.5rem, 6vh, 6rem) 0.6rem clamp(1.5rem, 2.5vh, 2.5rem) !important;
+  }
+  
+  .caption {
+    gap: 1rem !important;
+  }
+  
+  .hero-card {
+    min-height: clamp(320px, 38vh, 380px) !important;
+    padding: 1.3rem 1rem !important;
+  }
+  
+  .video-card {
+    min-height: clamp(280px, 32vh, 340px) !important;
+    padding: 1rem !important;
+  }
+}
+
+/* Ensure perfect border radius across all devices */
+.hero-card,
+.video-card,
+.hero-card > div:first-child {
+  border-radius: clamp(16px, 3vw, 24px) !important;
   overflow: hidden !important;
-  position: relative !important;
 }
 
-.caption > div:first-child > div:first-child {
-  border-radius: 24px !important;
+/* Smooth transitions for responsive changes */
+.caption,
+.hero-card,
+.video-card,
+.bottom-content {
+  transition: all 0.3s ease-in-out;
 }
 
-/* Ensure all corners are perfectly rounded */
-@supports (border-radius: 24px) {
-  .caption > div:first-child,
-  .caption > div:first-child > div:first-child {
-    border-top-left-radius: 24px !important;
-    border-top-right-radius: 24px !important;
-    border-bottom-left-radius: 24px !important;
-    border-bottom-right-radius: 24px !important;
+/* Optimize text rendering on all devices */
+h1, h2, p {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure proper touch targets on mobile */
+@media (max-width: 768px) {
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
   }
 }
-`}</style>
+      `}</style>
     </header>
   )
 }
