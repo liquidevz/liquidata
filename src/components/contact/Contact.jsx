@@ -1,5 +1,7 @@
-"use client"
-import { useState } from "react"
+// pages/contact.js
+"use client";
+
+import { useState } from "react";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -11,21 +13,68 @@ function Contact() {
     email: "",
     details: "",
     privacyPolicy: false,
-  })
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target
+    const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
-    }))
-  }
+    }));
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(formData)
-    // Handle form submission
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!formData.privacyPolicy) {
+      setMessage("Please accept the privacy policy.");
+      return;
+    }
+
+    setLoading(true);
+    setMessage("");
+
+    const token = localStorage.getItem("adminToken");
+    const companyId = process.env.NEXT_PUBLIC_COMPANY_ID;
+
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token ? `Bearer ${token}` : "",
+          "X-Company-ID": companyId,
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await res.json();
+
+      if (res.ok) {
+        setMessage("Inquiry submitted successfully!");
+        setFormData({
+          name: "",
+          company: "",
+          goal: "",
+          date: "",
+          budget: "",
+          email: "",
+          details: "",
+          privacyPolicy: false,
+        });
+      } else {
+        setMessage(result.message || "Submission failed.");
+      }
+    } catch (error) {
+      console.error(error);
+      setMessage("Error connecting to server.");
+    }
+
+    setLoading(false);
+  };
 
   return (
     <section className="contact-section">
@@ -95,7 +144,7 @@ function Contact() {
               <div className="form-text">I am hoping to stay around a budget range of</div>
               <div className="form-input-wrapper">
                 <select name="budget" required value={formData.budget} onChange={handleChange} className="form-input">
-                  <option value="" disabled selected>
+                  <option value="" disabled>
                     Select*
                   </option>
                   <option value="5k-10k">$5,000 - $10,000</option>
@@ -120,7 +169,7 @@ function Contact() {
                 />
               </div>
               <div className="form-text">to start the conversation.</div>
-              <div className="form-text">Optionally, i'm sharing more:</div>
+              <div className="form-text">Optionally, I'm sharing more:</div>
               <div className="form-input-wrapper">
                 <textarea
                   name="details"
@@ -145,7 +194,7 @@ function Contact() {
                   />
                   <span className="checkmark"></span>
                   <span className="policy-text">
-                    I agree with the{" "}
+                    I agree with the {" "}
                     <a href="#" className="privacy-link">
                       Privacy Policy
                     </a>
@@ -153,11 +202,13 @@ function Contact() {
                 </label>
               </div>
               <div className="submit-wrapper">
-                <button type="submit" className="submit-button">
-                  SEND INQUIRY
+                <button type="submit" className="submit-button" disabled={loading}>
+                  {loading ? "Sending..." : "SEND INQUIRY"}
                 </button>
               </div>
             </div>
+
+            {message && <p style={{ marginTop: 20 }}>{message}</p>}
           </form>
         </div>
       </div>

@@ -1,0 +1,48 @@
+/* Base styles that should be applied immediately */
+:root {
+  --primary-color: #fbbf24;
+  --text-color: #1a1a2e;
+}
+
+/* Prevent FOUC */
+body {
+  visibility: visible;
+  opacity: 1;
+  background: #ffffff;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Loading state styles */
+body.loading {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* Ensure smooth transitions */
+body {
+  transition: opacity 0.2s ease;
+}
+
+/* Critical styles that should be loaded immediately */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Preload state for images and fonts */
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
+
+/* Force font loading */
+@font-face {
+  font-display: swap;
+}

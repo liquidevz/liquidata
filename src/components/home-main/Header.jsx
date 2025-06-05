@@ -218,6 +218,7 @@ function Header() {
                       </div>
                       <AnimatedButton
                         text="BOOK A CALL"
+                        href="/contact"
                         style={{
                           color: "#1a1a2e",
                           fontSize: "clamp(0.8rem, 2vw + 0.1rem, 1.1rem)",

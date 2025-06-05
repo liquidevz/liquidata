@@ -1,15 +1,27 @@
-"use client";
-
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 export default function AnimatedButton({ text, onClick, style, href }) {
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    if (href) {
+      e.preventDefault();
+      navigate(href);
+    }
+    if (onClick) {
+      onClick(e);
+    }
+  };
+
+  const ButtonTag = href ? 'a' : 'button';
 
   return (
-    <button
-      onClick={onClick}
+    <ButtonTag
+      href={href}
+      onClick={handleClick}
       style={{
-        href:"",
         background: "#fbbf24",
         color: "#1a1a2e",
         border: "none",
@@ -28,6 +40,7 @@ export default function AnimatedButton({ text, onClick, style, href }) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        textDecoration: "none",
         ...style,
       }}
       onMouseEnter={(e) => {
@@ -76,6 +89,6 @@ export default function AnimatedButton({ text, onClick, style, href }) {
           {text}
         </span>
       </div>
-    </button>
+    </ButtonTag>
   );
 }
