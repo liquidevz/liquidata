@@ -2,6 +2,10 @@
 "use client";
 
 import { useState } from "react";
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import dayjs from 'dayjs';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -26,6 +30,13 @@ function Contact() {
     }));
   };
 
+  const handleDateChange = (newDate) => {
+    setFormData(prev => ({
+      ...prev,
+      date: newDate ? dayjs(newDate).format('YYYY-MM-DD') : ''
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -37,24 +48,19 @@ function Contact() {
     setLoading(true);
     setMessage("");
 
-    const token = localStorage.getItem("adminToken");
-    const companyId = process.env.NEXT_PUBLIC_COMPANY_ID;
-
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/contact`, {
-        method: "POST",
+      const response = await fetch('http://localhost:5000/api/send-email', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
-          Authorization: token ? `Bearer ${token}` : "",
-          "X-Company-ID": companyId,
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData)
       });
 
-      const result = await res.json();
+      const data = await response.json();
 
-      if (res.ok) {
-        setMessage("Inquiry submitted successfully!");
+      if (response.ok) {
+        setMessage("Thank you! Your message has been sent successfully.");
         setFormData({
           name: "",
           company: "",
@@ -66,11 +72,11 @@ function Contact() {
           privacyPolicy: false,
         });
       } else {
-        setMessage(result.message || "Submission failed.");
+        throw new Error(data.message || 'Failed to send email');
       }
     } catch (error) {
-      console.error(error);
-      setMessage("Error connecting to server.");
+      console.error('Error sending email:', error);
+      setMessage("Sorry, there was an error sending your message. Please try again.");
     }
 
     setLoading(false);
@@ -136,6 +142,12 @@ function Contact() {
                   value={formData.date}
                   onChange={handleChange}
                   className="form-input"
+                  onFocus={(e) => e.target.type = 'date'}
+                  onBlur={(e) => {
+                    if (!e.target.value) {
+                      e.target.type = 'text'
+                    }
+                  }}
                 />
               </div>
             </div>
@@ -451,6 +463,20 @@ function Contact() {
           .form-input {
             font-size: 22px;
           }
+        }
+        
+        .form-input[type="date"] {
+          font-family: inherit;
+          color: inherit;
+        }
+        
+        .form-input[type="date"]::-webkit-calendar-picker-indicator {
+          cursor: pointer;
+          opacity: 0.6;
+        }
+        
+        .form-input[type="date"]::-webkit-calendar-picker-indicator:hover {
+          opacity: 1;
         }
       `}</style>
     </section>
