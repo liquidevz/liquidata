@@ -47,7 +47,7 @@ function Blog() {
                       And the day came when the risk to remain tight in a bud
                       was more painful than the risk it took to blossom.
                     </span>
-                    <span className="sub-title mt-20 mb-0"> - UiCamp</span>
+                    <span className="sub-title mt-20 mb-0"> - LiquiData</span>
                   </h6>
                 </div>
 
@@ -124,7 +124,7 @@ function Blog() {
                     </div>
                     <div>
                       <a href="/blog-classic">Tech</a>
-                      <a href="/blog-classic">UiCamp</a>
+                      <a href="/blog-classic">LiquiData</a>
                     </div>
                   </div>
                 </div>

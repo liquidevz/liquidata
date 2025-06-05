@@ -3,8 +3,8 @@
     Theme Name: Liquidata
     Theme URI: http://
     Description: Creative Agency & Portfolio
-    Author: UiCamp
-    Author URI: http://themeforest.net/user/UiCamp
+    Author: LiquiData
+    Author URI: http://themeforest.net/user/LiquiData
     Version: 1.0
 
 -----------------------------------------------------------------------------------*/

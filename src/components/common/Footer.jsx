@@ -82,8 +82,8 @@ function Footer() {
             <p className="fz-14">
               © 2024 Liquidata is Proudly Powered by{' '}
               <span className="underline main-color">
-                <a href="https://themeforest.net/user/UiCamp" target="_blank">
-                  UiCamp
+                <a href="https://themeforest.net/user/LiquiData" target="_blank">
+                  LiquiData
                 </a>
               </span>
             </p>

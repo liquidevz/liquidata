@@ -27,7 +27,7 @@ function Challenge() {
             <div className="col-md-6 col-lg-3">
               <div className="item">
                 <span className="opacity-8 mb-5">Designer :</span>
-                <h6>UiCamp</h6>
+                <h6>LiquiData</h6>
               </div>
             </div>
           </div>

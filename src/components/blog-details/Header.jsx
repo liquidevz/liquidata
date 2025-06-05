@@ -38,7 +38,7 @@ function Header() {
                       </a>
                       <a href="#0" className="ml-20">
                         <span className="opacity-7">Author</span>
-                        <h6 className="fz-16">UiCamp</h6>
+                        <h6 className="fz-16">LiquiData</h6>
                       </a>
                     </div>
                   </div>
