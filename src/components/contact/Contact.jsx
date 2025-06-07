@@ -48,13 +48,18 @@ function Contact() {
     setLoading(true);
     setMessage("");
 
+    const API_URL = process.env.REACT_APP_API_URL || 'https://liquidata-api.vercel.app';
+    
     try {
-      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+      console.log('Sending request to:', API_URL); // Debug log
+      
       const response = await fetch(`${API_URL}/api/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Origin': window.location.origin
         },
+        credentials: 'include',
         body: JSON.stringify(formData)
       });
 
@@ -77,7 +82,10 @@ function Contact() {
       }
     } catch (error) {
       console.error('Error sending email:', error);
-      setMessage("Sorry, there was an error sending your message. Please try again.");
+      setMessage(
+        "Sorry, there was an error sending your message. Please try again or contact us directly at " + 
+        (process.env.REACT_APP_CONTACT_EMAIL || "support@liquidata.com")
+      );
     }
 
     setLoading(false);
