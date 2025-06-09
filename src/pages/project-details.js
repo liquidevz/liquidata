@@ -22,7 +22,6 @@ import { useEffect, useRef } from 'react';
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 export default function ProjectDetails() {
   const main = useRef();
-  const smoother = useRef();
 
   useEffect(() => {
     const loadScript = (src) => {

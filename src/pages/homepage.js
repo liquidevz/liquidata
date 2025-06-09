@@ -26,7 +26,6 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Home() {
   const main = useRef();
-  const smoother = useRef();
 
   useEffect(() => {
     // Initialize WOW.js animations

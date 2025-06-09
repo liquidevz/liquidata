@@ -19,7 +19,6 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Insights() {
   const main = useRef();
-  const smoother = useRef();
 
   useEffect(() => {
     const loadScript = (src) => {
