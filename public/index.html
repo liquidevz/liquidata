@@ -9,6 +9,17 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/assets/imgs/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="%PUBLIC_URL%/assets/css/style.css" as="style" />
+    <link rel="preload" href="%PUBLIC_URL%/assets/css/plugins.css" as="style" />
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" as="style" />
+    
+    <!-- Critical CSS -->
+    <style>
+      body { visibility: hidden; }
+      .js body { visibility: visible; }
+    </style>
+    
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/assets/css/plugins.css" />
     <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/assets/css/style.css" />
@@ -23,16 +34,19 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     
+    <!-- Add JS class to body -->
+    <script>document.body.classList.add('js');</script>
+    
     <!-- Scripts -->
-    <script src="%PUBLIC_URL%/assets/js/gsap.min.js"></script>
-    <script src="%PUBLIC_URL%/assets/js/ScrollTrigger.min.js"></script>
-    <script src="%PUBLIC_URL%/assets/js/ScrollSmoother.min.js"></script>
-    <script src="%PUBLIC_URL%/assets/js/smoother-script.js"></script>
-    <script src="%PUBLIC_URL%/assets/js/splitting.min.js"></script>
-    <script src="%PUBLIC_URL%/assets/js/isotope.pkgd.min.js"></script>
-    <script src="%PUBLIC_URL%/assets/js/plugins.js"></script>
-    <script src="%PUBLIC_URL%/assets/js/TweenMax.min.js"></script>
-    <script src="%PUBLIC_URL%/assets/js/charming.min.js"></script>
-    <script src="%PUBLIC_URL%/assets/js/countdown.js"></script>
+    <script src="%PUBLIC_URL%/assets/js/gsap.min.js" defer></script>
+    <script src="%PUBLIC_URL%/assets/js/ScrollTrigger.min.js" defer></script>
+    <script src="%PUBLIC_URL%/assets/js/ScrollSmoother.min.js" defer></script>
+    <script src="%PUBLIC_URL%/assets/js/smoother-script.js" defer></script>
+    <script src="%PUBLIC_URL%/assets/js/splitting.min.js" defer></script>
+    <script src="%PUBLIC_URL%/assets/js/isotope.pkgd.min.js" defer></script>
+    <script src="%PUBLIC_URL%/assets/js/plugins.js" defer></script>
+    <script src="%PUBLIC_URL%/assets/js/TweenMax.min.js" defer></script>
+    <script src="%PUBLIC_URL%/assets/js/charming.min.js" defer></script>
+    <script src="%PUBLIC_URL%/assets/js/countdown.js" defer></script>
   </body>
 </html>
