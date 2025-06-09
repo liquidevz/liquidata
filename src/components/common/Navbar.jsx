@@ -42,15 +42,18 @@ function Navbar() {
           </a>
 
           <button
-            className="navbar-toggler"
+            className="navbar-toggler custom-toggler"
             type="button"
             onClick={toggleMobileMenu}
             aria-label="Toggle Navigation"
+            aria-expanded={isMenuOpen}
           >
-            <span className="navbar-toggler-icon"></span>
+            <div className="hamburger-box">
+              <div className="hamburger-inner"></div>
+            </div>
           </button>
 
-          <div className="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+          <div className={`collapse navbar-collapse justify-content-center ${isMenuOpen ? 'show' : ''}`}>
             <ul className="navbar-nav">
               <li className="nav-item">
                 <Link to="/services" className="nav-link">
@@ -58,24 +61,24 @@ function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/works">
+                <Link to="/works" className="nav-link">
                   <span className="rolling-text">Portfolio</span>
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/insights">
+                <Link to="/insights" className="nav-link">
                   <span className="rolling-text">Insights</span>
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/about">
+                <Link to="/about" className="nav-link">
                   <span className="rolling-text">About Us</span>
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/contact">
+                <Link to="/contact" className="nav-link">
                   <span className="rolling-text">Contact Us</span>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -90,9 +93,9 @@ function Navbar() {
       {/* Mobile Menu Overlay */}
       <div className={`mobile-menu-overlay ${isMenuOpen ? "active" : ""}`}>
         <div className="mobile-menu-header">
-          <a className="mobile-logo" href="#">
+          <Link className="mobile-logo" to="/">
             <img src="/assets/imgs/logo-light.png" alt="logo" />
-          </a>
+          </Link>
           <button className="mobile-menu-close" onClick={toggleMobileMenu} aria-label="Close menu">
             <i className="fas fa-times"></i>
           </button>
@@ -106,24 +109,24 @@ function Navbar() {
               </Link>
             </li>
             <li>
-              <a href="/portfolio-masonry" onClick={toggleMobileMenu}>
+              <Link to="/works" className="mobile-nav-link" onClick={toggleMobileMenu}>
                 OUR WORK
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/about" onClick={toggleMobileMenu}>
+              <Link to="/about" className="mobile-nav-link" onClick={toggleMobileMenu}>
                 ABOUT US
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/insights" onClick={toggleMobileMenu}>
+              <Link to="/insights" className="mobile-nav-link" onClick={toggleMobileMenu}>
                 INSIGHTS
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/contact" onClick={toggleMobileMenu}>
+              <Link to="/contact" className="mobile-nav-link" onClick={toggleMobileMenu}>
                 CONTACT US
-              </a>
+              </Link>
             </li>
           </ul>
 
@@ -198,6 +201,71 @@ function Navbar() {
           height: auto;
         }
 
+        .custom-toggler {
+          padding: 15px;
+          border: none;
+          background: transparent;
+          outline: none !important;
+          cursor: pointer;
+          margin-right: 0;
+          position: relative;
+          width: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .hamburger-box {
+          width: 30px;
+          height: 24px;
+          position: relative;
+          display: inline-block;
+        }
+
+        .hamburger-inner {
+          width: 100%;
+          height: 2px;
+          background-color: #fff;
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          transition: background-color 0.2s ease-in-out;
+        }
+
+        .hamburger-inner::before,
+        .hamburger-inner::after {
+          content: '';
+          display: block;
+          width: 100%;
+          height: 2px;
+          background-color: #fff;
+          position: absolute;
+          left: 0;
+          transition: transform 0.2s ease-in-out;
+        }
+
+        .hamburger-inner::before {
+          top: -8px;
+        }
+
+        .hamburger-inner::after {
+          bottom: -8px;
+        }
+
+        .custom-toggler[aria-expanded="true"] .hamburger-inner {
+          background-color: transparent;
+        }
+
+        .custom-toggler[aria-expanded="true"] .hamburger-inner::before {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        .custom-toggler[aria-expanded="true"] .hamburger-inner::after {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+
         .mobile-menu-close {
           background: none;
           border: none;
@@ -235,7 +303,7 @@ function Navbar() {
           }
         }
 
-        .mobile-nav a {
+        .mobile-nav-link {
           color: #fff;
           text-decoration: none;
           font-size: 42px;
@@ -243,7 +311,7 @@ function Navbar() {
           transition: color 0.3s ease;
         }
 
-        .mobile-nav a:hover {
+        .mobile-nav-link:hover {
           color: #c9fd02;
         }
 
@@ -270,20 +338,42 @@ function Navbar() {
           .navbar-collapse {
             display: none !important;
           }
-          
+
+          .navbar-collapse.show {
+            display: block !important;
+          }
+
           .d-lg-block {
             display: none !important;
           }
         }
 
         @media (max-width: 480px) {
-          .mobile-nav a {
+          .mobile-nav-link {
             font-size: 32px;
           }
-          
+
           .mobile-cta :global(.btn) {
             width: 100%;
             padding: 15px 20px;
+          }
+        }
+
+        .logo {
+          display: flex;
+          align-items: center;
+          height: 100%;
+        }
+
+        .logo img {
+          max-height: 40px;
+          width: auto;
+          object-fit: contain;
+        }
+
+        @media (max-width: 991px) {
+          .logo img {
+            max-height: 35px;
           }
         }
       `}</style>

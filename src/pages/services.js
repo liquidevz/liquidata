@@ -115,7 +115,7 @@ export default function PageServices() {
               <Testimonials />
               <Clients />
               <Blog />
-              <Marq2 />
+              <Marq2 data={['Our Services', 'Get Started']} />
             </main>
             <Footer />
           </div>

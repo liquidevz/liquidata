@@ -120,7 +120,7 @@ export default function HomeDigitalAgency() {
               <Testimonials />
               <Clients />
               <Blog />
-              <Marq2 />
+              <Marq2 data={['Digital Agency', 'Contact Us']} />
             </main>
             <Footer />
           </div>

@@ -1,12 +1,31 @@
 "use client"
-import { useEffect } from "react"
+import { useEffect, useState, useRef } from "react"
 import AnimatedButton from "../common/Button"
 import loadBackgroudImages from "../../common/loadBackgroudImages"
 
 function Header() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showFullVideo, setShowFullVideo] = useState(false);
+  const videoRef = useRef(null);
+
   useEffect(() => {
     loadBackgroudImages()
   }, [])
+
+  const handlePlayClick = () => {
+    setShowFullVideo(true);
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0; // Reset to start
+      videoRef.current.play();
+    }
+  };
+
+  const handleClose = () => {
+    setShowFullVideo(false);
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
+  };
 
   return (
     <header
@@ -29,7 +48,7 @@ function Header() {
           zIndex: 10,
           maxWidth: "1400px",
           margin: "0 auto",
-          padding: "0 clamp(0.8rem, 2.5vw, 2rem)",
+          padding: "40 clamp(0.8rem, 2.5vw, 2rem)",
           width: "100%",
         }}
       >
@@ -237,7 +256,7 @@ function Header() {
               {/* Right Dashboard Interface Section */}
               <div
                 style={{
-                  background: "#f8fafc",
+                  background: "#000",
                   borderRadius: "clamp(16px, 3vw, 24px)",
                   position: "relative",
                   overflow: "hidden",
@@ -250,7 +269,77 @@ function Header() {
                 }}
                 className="video-card"
               >
-                {/* Video overlay for actual video */}
+                {/* Full screen video player */}
+                {showFullVideo && (
+                  <div
+                    style={{
+                      position: "fixed",
+                      top: 0,
+                      left: 0,
+                      width: "100%",
+                      height: "100%",
+                      background: "rgba(0, 0, 0, 0.9)",
+                      zIndex: 1000,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "20px",
+                    }}
+                  >
+                    <button
+                      onClick={handleClose}
+                      style={{
+                        position: "absolute",
+                        top: "20px",
+                        right: "20px",
+                        background: "white",
+                        border: "none",
+                        borderRadius: "50%",
+                        width: "40px",
+                        height: "40px",
+                        cursor: "pointer",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        zIndex: 1001,
+                      }}
+                      aria-label="Close video"
+                    >
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 6L6 18M6 6l12 12"
+                          stroke="#000"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </button>
+                    <video
+                      ref={videoRef}
+                      controls
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        maxWidth: "1200px",
+                        maxHeight: "80vh",
+                        objectFit: "contain",
+                        borderRadius: "8px",
+                        backgroundColor: "#000",
+                      }}
+                    >
+                      <source src="https://d3vlq52qrgdnc2.cloudfront.net/UIUX-Showreel-preview-big.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                )}
+
+                {/* Background video */}
                 <video
                   autoPlay
                   muted
@@ -265,14 +354,51 @@ function Header() {
                     objectFit: "cover",
                     borderRadius: "clamp(16px, 3vw, 24px)",
                     zIndex: 1,
-                    opacity: 1,
+                    opacity: 0.7,
+                    backgroundColor: "#000",
                   }}
                 >
-                  <source
-                    src="https://elasticbeanstalk-ap-south-1-954976323838.s3.ap-south-1.amazonaws.com/varun/1.mp4"
-                    type="video/mp4"
-                  />
+                  <source src="https://d3vlq52qrgdnc2.cloudfront.net/UIUX-Showreel-preview-big.mp4" type="video/mp4" />
                 </video>
+
+                {/* Play button overlay */}
+                {!showFullVideo && (
+                  <button
+                    onClick={handlePlayClick}
+                    style={{
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      zIndex: 2,
+                      background: "rgba(255, 255, 255, 0.9)",
+                      border: "none",
+                      borderRadius: "50%",
+                      width: "clamp(60px, 8vw, 80px)",
+                      height: "clamp(60px, 8vw, 80px)",
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+                      transition: "transform 0.2s ease, background-color 0.2s ease",
+                    }}
+                    aria-label="Play video"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M8 5.14v14.72a1 1 0 001.5.87l11-7.36a1 1 0 000-1.74l-11-7.36a1 1 0 00-1.5.87z"
+                        fill="#000"
+                      />
+                    </svg>
+                  </button>
+                )}
               </div>
             </div>
           </div>

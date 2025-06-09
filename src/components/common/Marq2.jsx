@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Marq2({ data }) {
+function Marq2({ data = ['Get In Touch', 'Contact Us'] }) {
   return (
     <section className="serv-marq main-colorbg">
       <div className="container-fluid rest">

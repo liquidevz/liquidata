@@ -122,7 +122,7 @@ export default function HomeModernStudio() {
               <Testimonials />
               <Clients />
               <Blog />
-              <Marq2 />
+              <Marq2 data={['Modern Studio', 'Get Started']} />
             </main>
             <Footer />
           </div>

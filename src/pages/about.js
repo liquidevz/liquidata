@@ -116,7 +116,7 @@ export default function PageAbout() {
               <Testimonials />
               <Clients />
               <Blog />
-              <Marq2 />
+              <Marq2 data={['About Us', 'Learn More']} />
             </main>
             <Footer />
           </div>
