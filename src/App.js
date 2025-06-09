@@ -13,9 +13,10 @@ import PortfolioCreativeCarousel from './pages/works.js';
 import ProjectDetails from './pages/project-details.js';
 import AdminPanel from './pages/admin';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 // import { ScrollSmoother } from 'gsap-trial/ScrollSmoother';
 
+// Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 // gsap.config({ trialWarn: false });
 

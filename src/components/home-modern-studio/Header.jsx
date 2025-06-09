@@ -1,8 +1,12 @@
 'use client';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 
-import { Autoplay, EffectFade, Keyboard, Navigation, Pagination } from 'swiper';
+import { Autoplay, EffectFade, Keyboard, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
 import loadBackgroudImages from '../../common/loadBackgroudImages';
 function Header() {
   const [galleryImg, setGalleryImg] = useState(null);
