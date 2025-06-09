@@ -143,16 +143,16 @@ function Navbar() {
           <div className="mobile-menu-footer">
             <div className="social-links">
               <span className="social-label">S:</span>
-              <a href="#" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/liquidata" target="_blank" rel="noopener noreferrer">
                 Instagram
               </a>
-              <a href="#" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.behance.net/liquidata" target="_blank" rel="noopener noreferrer">
                 Behance
               </a>
-              <a href="#" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.facebook.com/liquidata" target="_blank" rel="noopener noreferrer">
                 Facebook
               </a>
-              <a href="#" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/company/liquidata" target="_blank" rel="noopener noreferrer">
                 LinkedIn
               </a>
             </div>

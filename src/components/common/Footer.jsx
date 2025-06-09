@@ -64,8 +64,13 @@ function Footer() {
                   </a>
                 </li>
                 <li className="hover-this cursor-pointer ml-10">
-                  <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">
-                    <i className="fab fa-linkedin-in"></i>
+                  <a
+                    href="https://www.linkedin.com/company/liquidata"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover-this"
+                  >
+                    <i className="fab fa-linkedin"></i>
                   </a>
                 </li>
                 <li className="hover-this cursor-pointer ml-10">
