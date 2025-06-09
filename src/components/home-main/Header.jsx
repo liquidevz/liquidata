@@ -3,8 +3,7 @@ import { useEffect, useState, useRef } from "react"
 import AnimatedButton from "../common/Button"
 import loadBackgroudImages from "../../common/loadBackgroudImages"
 
-function Header() {
-  const [isPlaying, setIsPlaying] = useState(false);
+const Header = () => {
   const [showFullVideo, setShowFullVideo] = useState(false);
   const videoRef = useRef(null);
 

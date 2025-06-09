@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Autoplay, EffectFade, Keyboard, Navigation, Pagination } from 'swiper/modules';
