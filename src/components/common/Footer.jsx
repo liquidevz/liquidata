@@ -73,9 +73,34 @@ function Footer() {
                     <i className="fab fa-linkedin"></i>
                   </a>
                 </li>
-                <li className="hover-this cursor-pointer ml-10">
-                  <a href="#0" className="hover-anim">
+                <li className="hover-this cursor-pointer">
+                  <a
+                    href="https://www.instagram.com/liquidata"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover-this"
+                  >
                     <i className="fab fa-instagram"></i>
+                  </a>
+                </li>
+                <li className="hover-this cursor-pointer ml-10">
+                  <a
+                    href="https://www.behance.net/liquidata"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover-this"
+                  >
+                    <i className="fab fa-behance"></i>
+                  </a>
+                </li>
+                <li className="hover-this cursor-pointer ml-10">
+                  <a
+                    href="https://www.facebook.com/liquidata"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover-this"
+                  >
+                    <i className="fab fa-facebook"></i>
                   </a>
                 </li>
               </ul>
@@ -84,13 +109,15 @@ function Footer() {
         </div>
         <div className="pt-30 pb-30 mt-80 bord-thin-top">
           <div className="text-center">
-            <p className="fz-14">
-              © 2024 Liquidata is Proudly Powered by{' '}
-              <span className="underline main-color">
-                <a href="https://themeforest.net/user/LiquiData" target="_blank">
-                  LiquiData
-                </a>
-              </span>
+            <p className="fz-13">
+              © 2024 Liquidata. All Rights Reserved |{" "}
+              <a
+                href="https://themeforest.net/user/LiquiData"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LiquiData
+              </a>
             </p>
           </div>
         </div>
