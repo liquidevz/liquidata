@@ -18,6 +18,9 @@ function Contact() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
+  // Get today's date as minimum date
+  const today = new Date().toISOString().split('T')[0];
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -37,24 +40,21 @@ function Contact() {
     setLoading(true);
     setMessage("");
 
-    const token = localStorage.getItem("adminToken");
-    const companyId = process.env.NEXT_PUBLIC_COMPANY_ID;
-
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/contact`, {
-        method: "POST",
+      console.log('Sending request to:', 'https://liquidata-api.vercel.app/api/send-email');
+      
+      const response = await fetch('https://liquidata-api.vercel.app/api/send-email', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
-          Authorization: token ? `Bearer ${token}` : "",
-          "X-Company-ID": companyId,
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData)
       });
 
-      const result = await res.json();
+      const data = await response.json();
 
-      if (res.ok) {
-        setMessage("Inquiry submitted successfully!");
+      if (data.success) {
+        setMessage("Thank you! Your message has been sent successfully.");
         setFormData({
           name: "",
           company: "",
@@ -66,11 +66,11 @@ function Contact() {
           privacyPolicy: false,
         });
       } else {
-        setMessage(result.message || "Submission failed.");
+        setMessage(data.message || "Failed to send message. Please try again.");
       }
     } catch (error) {
-      console.error(error);
-      setMessage("Error connecting to server.");
+      console.error('Error details:', error);
+      setMessage("Unable to send message. Please try again later.");
     }
 
     setLoading(false);
@@ -127,15 +127,16 @@ function Contact() {
 
             <div className="form-line">
               <div className="form-text">With an idea of having that completed</div>
-              <div className="form-input-wrapper">
+              <div className="form-input-wrapper date-input-wrapper">
                 <input
-                  type="text"
+                  type="date"
                   name="date"
-                  placeholder="Date*"
+                  placeholder="Select a date*"
                   required
+                  min={today}
                   value={formData.date}
                   onChange={handleChange}
-                  className="form-input"
+                  className="form-input date-input"
                 />
               </div>
             </div>
@@ -386,6 +387,57 @@ function Contact() {
           background-color: #777;
         }
         
+        .date-input-wrapper {
+          position: relative;
+          width: 100%;
+        }
+        
+        .date-input {
+          width: 100%;
+          padding-right: 30px !important;
+          cursor: pointer;
+          color: #555 !important;
+        }
+        
+        .date-input::-webkit-calendar-picker-indicator {
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          cursor: pointer;
+          padding: 5px;
+          opacity: 0.7;
+          filter: invert(0.5);
+          transition: opacity 0.3s;
+        }
+        
+        .date-input::-webkit-calendar-picker-indicator:hover {
+          opacity: 1;
+        }
+        
+        /* Override default date input styles */
+        .date-input::-webkit-datetime-edit {
+          padding: 0;
+        }
+        
+        .date-input::-webkit-datetime-edit-fields-wrapper {
+          padding: 0;
+        }
+        
+        .date-input::-webkit-datetime-edit-text {
+          padding: 0 2px;
+        }
+        
+        .date-input::-webkit-datetime-edit-month-field,
+        .date-input::-webkit-datetime-edit-day-field,
+        .date-input::-webkit-datetime-edit-year-field {
+          padding: 0;
+        }
+        
+        .date-input::-webkit-inner-spin-button {
+          display: none;
+        }
+        
         /* Mobile styles */
         @media (max-width: 900px) {
           .form-text {
@@ -402,6 +454,10 @@ function Contact() {
           
           .form-input-wrapper:last-child {
             margin-bottom: 0;
+          }
+          
+          .date-input {
+            font-size: 16px; /* Prevent zoom on mobile */
           }
         }
         
@@ -440,6 +496,10 @@ function Contact() {
           .privacy-policy {
             margin-bottom: 0;
           }
+          
+          .date-input-wrapper {
+            min-width: 200px;
+          }
         }
         
         /* Large desktop styles */
@@ -449,6 +509,10 @@ function Contact() {
           }
           
           .form-input {
+            font-size: 22px;
+          }
+          
+          .date-input {
             font-size: 22px;
           }
         }
