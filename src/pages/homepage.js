@@ -89,7 +89,7 @@ export default function Home() {
               <Team />
               <Testimonials />
               <Clients />
-              <Marq2 />
+              <Marq2 data={['Get In Touch', 'Contact Us']} />
             </main>
             <Footer />
           </div>
