@@ -17,6 +17,7 @@ function Contact() {
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState(""); // 'success' or 'error'
 
   // Get today's date as minimum date
   const today = new Date().toISOString().split('T')[0];
@@ -34,27 +35,39 @@ function Contact() {
 
     if (!formData.privacyPolicy) {
       setMessage("Please accept the privacy policy.");
+      setMessageType("error");
       return;
     }
 
     setLoading(true);
     setMessage("");
+    setMessageType("");
 
     try {
-      console.log('Sending request to:', 'https://liquidata-api.vercel.app/api/send-email');
-      
-      const response = await fetch('https://liquidata-api.vercel.app/api/send-email', {
+      // Get the API URL from environment variables, fallback to localhost for development
+      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+      console.log('Sending request to:', `${apiUrl}/send-email`);
+
+      const response = await fetch(`${apiUrl}/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify(formData)
       });
 
-      const data = await response.json();
+      let data;
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.indexOf("application/json") !== -1) {
+        data = await response.json();
+      } else {
+        throw new Error("Server error: Expected JSON response but received different content type");
+      }
 
-      if (data.success) {
+      if (response.ok && data.success) {
         setMessage("Thank you! Your message has been sent successfully.");
+        setMessageType("success");
         setFormData({
           name: "",
           company: "",
@@ -66,11 +79,12 @@ function Contact() {
           privacyPolicy: false,
         });
       } else {
-        setMessage(data.message || "Failed to send message. Please try again.");
+        throw new Error(data.message || "Failed to send message. Please try again.");
       }
     } catch (error) {
       console.error('Error details:', error);
-      setMessage("Unable to send message. Please try again later.");
+      setMessage(error.message || "Unable to send message. Please try again later.");
+      setMessageType("error");
     }
 
     setLoading(false);
@@ -144,10 +158,14 @@ function Contact() {
             <div className="form-line">
               <div className="form-text">I am hoping to stay around a budget range of</div>
               <div className="form-input-wrapper">
-                <select name="budget" required value={formData.budget} onChange={handleChange} className="form-input">
-                  <option value="" disabled>
-                    Select*
-                  </option>
+                <select 
+                  name="budget" 
+                  required 
+                  value={formData.budget} 
+                  onChange={handleChange} 
+                  className="form-input"
+                >
+                  <option value="" disabled>Select*</option>
                   <option value="5k-10k">$5,000 - $10,000</option>
                   <option value="10k-25k">$10,000 - $25,000</option>
                   <option value="25k-50k">$25,000 - $50,000</option>
@@ -209,7 +227,18 @@ function Contact() {
               </div>
             </div>
 
-            {message && <p style={{ marginTop: 20 }}>{message}</p>}
+            {message && (
+              <div className={`message ${messageType}`} style={{ 
+                marginTop: 20,
+                padding: '10px 15px',
+                borderRadius: '4px',
+                backgroundColor: messageType === 'success' ? '#d4edda' : '#f8d7da',
+                color: messageType === 'success' ? '#155724' : '#721c24',
+                border: `1px solid ${messageType === 'success' ? '#c3e6cb' : '#f5c6cb'}`
+              }}>
+                {message}
+              </div>
+            )}
           </form>
         </div>
       </div>
@@ -351,142 +380,26 @@ function Contact() {
           display: block;
         }
         
-        .checkbox-container .checkmark:after {
-          left: 9px;
-          top: 5px;
-          width: 5px;
-          height: 10px;
-          border: solid white;
-          border-width: 0 2px 2px 0;
-          transform: rotate(45deg);
-        }
-        
-        .policy-text {
-          font-size: 16px;
-          color: #555;
-        }
-        
-        .privacy-link {
-          color: #222;
-          text-decoration: underline;
-        }
-        
         .submit-button {
-          background-color: #999;
+          background-color: #222;
           color: white;
           border: none;
-          border-radius: 50px;
           padding: 15px 30px;
           font-size: 16px;
-          font-weight: 600;
           cursor: pointer;
           transition: background-color 0.3s;
         }
         
         .submit-button:hover {
-          background-color: #777;
+          background-color: #444;
         }
         
-        .date-input-wrapper {
-          position: relative;
-          width: 100%;
+        .submit-button:disabled {
+          background-color: #999;
+          cursor: not-allowed;
         }
         
-        .date-input {
-          width: 100%;
-          padding-right: 30px !important;
-          cursor: pointer;
-          color: #555 !important;
-        }
-        
-        .date-input::-webkit-calendar-picker-indicator {
-          position: absolute;
-          right: 0;
-          top: 50%;
-          transform: translateY(-50%);
-          cursor: pointer;
-          padding: 5px;
-          opacity: 0.7;
-          filter: invert(0.5);
-          transition: opacity 0.3s;
-        }
-        
-        .date-input::-webkit-calendar-picker-indicator:hover {
-          opacity: 1;
-        }
-        
-        /* Override default date input styles */
-        .date-input::-webkit-datetime-edit {
-          padding: 0;
-        }
-        
-        .date-input::-webkit-datetime-edit-fields-wrapper {
-          padding: 0;
-        }
-        
-        .date-input::-webkit-datetime-edit-text {
-          padding: 0 2px;
-        }
-        
-        .date-input::-webkit-datetime-edit-month-field,
-        .date-input::-webkit-datetime-edit-day-field,
-        .date-input::-webkit-datetime-edit-year-field {
-          padding: 0;
-        }
-        
-        .date-input::-webkit-inner-spin-button {
-          display: none;
-        }
-        
-        /* Mobile styles */
-        @media (max-width: 900px) {
-          .form-text {
-            font-size: 29px;
-          }
-          
-          .form-line {
-            margin-bottom: 20px;
-          }
-          
-          .form-input-wrapper {
-            margin-bottom: 15px;
-          }
-          
-          .form-input-wrapper:last-child {
-            margin-bottom: 0;
-          }
-          
-          .date-input {
-            font-size: 16px; /* Prevent zoom on mobile */
-          }
-        }
-        
-        /* Desktop styles */
         @media (min-width: 768px) {
-          .form-line {
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-items: baseline;
-          }
-          
-          .form-text {
-            font-size: 30px;
-            margin-right: 15px;
-            margin-bottom: 0;
-            white-space: nowrap;
-          }
-          
-          .form-input-wrapper {
-            flex: 1;
-            min-width: 150px;
-            margin-bottom: 0;
-            margin-right: 15px;
-          }
-          
-          .form-input-wrapper:last-child {
-            margin-right: 0;
-          }
-          
           .form-footer {
             flex-direction: row;
             justify-content: space-between;
@@ -496,13 +409,8 @@ function Contact() {
           .privacy-policy {
             margin-bottom: 0;
           }
-          
-          .date-input-wrapper {
-            min-width: 200px;
-          }
         }
         
-        /* Large desktop styles */
         @media (min-width: 1200px) {
           .form-text {
             font-size: 44px;
@@ -518,7 +426,7 @@ function Contact() {
         }
       `}</style>
     </section>
-  )
+  );
 }
 
-export default Contact
+export default Contact;
