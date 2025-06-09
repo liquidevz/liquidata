@@ -26,7 +26,6 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function HomeDigitalAgency() {
   const main = useRef();
-  const smoother = useRef();
 
   useEffect(() => {
     const loadScript = (src) => {
