@@ -1,5 +1,5 @@
 'use client';
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect } from 'react';
 
 function Header() {
   return (

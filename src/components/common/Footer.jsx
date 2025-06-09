@@ -54,7 +54,7 @@ function Footer() {
               </div>
               <ul className="rest social-icon d-flex align-items-center">
                 <li className="hover-this cursor-pointer">
-                  <a href="#0" className="hover-anim">
+                  <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
                     <i className="fab fa-facebook-f"></i>
                   </a>
                 </li>
@@ -64,7 +64,7 @@ function Footer() {
                   </a>
                 </li>
                 <li className="hover-this cursor-pointer ml-10">
-                  <a href="#0" className="hover-anim">
+                  <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">
                     <i className="fab fa-linkedin-in"></i>
                   </a>
                 </li>

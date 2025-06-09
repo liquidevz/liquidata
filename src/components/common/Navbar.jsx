@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
 import AnimatedButton from "./Button"
+import { Link } from "react-router-dom"
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -44,19 +45,17 @@ function Navbar() {
             className="navbar-toggler"
             type="button"
             onClick={toggleMobileMenu}
-            aria-label="Toggle navigation"
+            aria-label="Toggle Navigation"
           >
-            <span className="icon-bar">
-              <i className="fas fa-bars"></i>
-            </span>
+            <span className="navbar-toggler-icon"></span>
           </button>
 
           <div className="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link" href="/services">
+                <Link to="/services" className="nav-link">
                   <span className="rolling-text">Services</span>
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/works">
@@ -102,9 +101,9 @@ function Navbar() {
         <div className="mobile-menu-content">
           <ul className="mobile-nav">
             <li>
-              <a href="/services" onClick={toggleMobileMenu}>
+              <Link to="/services" className="mobile-nav-link" onClick={toggleMobileMenu}>
                 SERVICES
-              </a>
+              </Link>
             </li>
             <li>
               <a href="/portfolio-masonry" onClick={toggleMobileMenu}>
