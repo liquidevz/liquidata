@@ -2,7 +2,6 @@
 "use client";
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -215,9 +214,9 @@ function Contact() {
                   <span className="checkmark"></span>
                   <span className="policy-text">
                     I agree with the {" "}
-                    <Link to="/privacy-policy" className="privacy-link">
+                    <a href="#" className="privacy-link">
                       Privacy Policy
-                    </Link>
+                    </a>
                   </span>
                 </label>
               </div>

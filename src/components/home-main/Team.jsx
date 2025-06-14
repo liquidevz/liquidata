@@ -26,29 +26,58 @@ const defaultTeamData = [
 
 function Team() {
   const [teamMembers, setTeamMembers] = useState(defaultTeamData);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchTeam = async () => {
       try {
+        setLoading(true);
         const response = await api.getTeam();
-        if (Array.isArray(response.data) && response.data.length > 0) {
-          setTeamMembers(response.data);
-        }
+        // Ensure we always have an array with at least the default data
+        const data = Array.isArray(response.data) && response.data.length > 0 
+          ? response.data.map(member => ({
+              ...member,
+              // Ensure imageUrl exists and has the correct format
+              imageUrl: member.imageUrl || member.image || '/assets/imgs/team/placeholder.jpg'
+            }))
+          : defaultTeamData;
+        setTeamMembers(data);
+        setError(null);
         // Initialize WOW.js
         if (typeof window !== 'undefined') {
           new WOW.WOW().init();
         }
       } catch (error) {
         console.error('Failed to fetch team members:', error);
+        setError('Failed to load team members');
+        setTeamMembers(defaultTeamData);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchTeam();
   }, []);
 
+  if (loading) {
+    return (
+      <section className="team section-padding pt-0">
+        <div className="container">
+          <div className="text-center">Loading team members...</div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="team section-padding pt-0">
       <div className="container">
+        {error && (
+          <div className="alert alert-warning text-center mb-4">
+            {error}
+          </div>
+        )}
         <div className="sec-head mb-80">
           <div className="d-flex align-items-center">
             <div>
@@ -77,7 +106,7 @@ function Team() {
                     alt={member.name}
                     onError={(e) => {
                       e.target.onerror = null;
-                      e.target.src = '/assets/imgs/team/1.jpg';
+                      e.target.src = '/assets/imgs/team/placeholder.jpg';
                     }}
                   />
                   <div className="info">

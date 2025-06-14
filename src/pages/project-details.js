@@ -114,7 +114,7 @@ export default function ProjectDetails() {
               <Solution />
               <Wroks2 />
               <Next />
-              <Marq2 data={['View Project', 'Learn More']} />
+              <Marq2 />
             </main>
             <Footer />
           </div>

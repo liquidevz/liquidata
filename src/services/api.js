@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create axios instance with default config
 const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3000/api',
+  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
@@ -49,13 +49,13 @@ export const api = {
   deletePortfolioItem: (id) => axiosInstance.delete(`/content/portfolio/${id}`),
 
   // Team
-  getTeam: () => Promise.resolve({ data: [] }),
+  getTeam: () => axiosInstance.get('/content/team').catch(() => ({ data: [] })),
   createTeamMember: (data) => axiosInstance.post('/content/team', data),
   updateTeamMember: (id, data) => axiosInstance.put(`/content/team/${id}`, data),
   deleteTeamMember: (id) => axiosInstance.delete(`/content/team/${id}`),
 
   // Testimonials
-  getTestimonials: () => Promise.resolve({ data: [] }),
+  getTestimonials: () => axiosInstance.get('/content/testimonials').catch(() => ({ data: [] })),
   createTestimonial: (data) => axiosInstance.post('/content/testimonials', data),
   updateTestimonial: (id, data) => axiosInstance.put(`/content/testimonials/${id}`, data),
   deleteTestimonial: (id) => axiosInstance.delete(`/content/testimonials/${id}`),

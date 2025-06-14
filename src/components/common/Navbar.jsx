@@ -1,7 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
 import AnimatedButton from "./Button"
-import { Link } from "react-router-dom"
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -42,43 +41,42 @@ function Navbar() {
           </a>
 
           <button
-            className="navbar-toggler custom-toggler"
+            className="navbar-toggler"
             type="button"
             onClick={toggleMobileMenu}
-            aria-label="Toggle Navigation"
-            aria-expanded={isMenuOpen}
+            aria-label="Toggle navigation"
           >
-            <div className="hamburger-box">
-              <div className="hamburger-inner"></div>
-            </div>
+            <span className="icon-bar">
+              <i className="fas fa-bars"></i>
+            </span>
           </button>
 
-          <div className={`collapse navbar-collapse justify-content-center ${isMenuOpen ? 'show' : ''}`}>
+          <div className="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link to="/services" className="nav-link">
+                <a className="nav-link" href="/services">
                   <span className="rolling-text">Services</span>
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link to="/works" className="nav-link">
+                <a className="nav-link" href="/works">
                   <span className="rolling-text">Portfolio</span>
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link to="/insights" className="nav-link">
+                <a className="nav-link" href="/insights">
                   <span className="rolling-text">Insights</span>
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link to="/about" className="nav-link">
+                <a className="nav-link" href="/about">
                   <span className="rolling-text">About Us</span>
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link to="/contact" className="nav-link">
+                <a className="nav-link" href="/contact">
                   <span className="rolling-text">Contact Us</span>
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -93,9 +91,9 @@ function Navbar() {
       {/* Mobile Menu Overlay */}
       <div className={`mobile-menu-overlay ${isMenuOpen ? "active" : ""}`}>
         <div className="mobile-menu-header">
-          <Link className="mobile-logo" to="/">
+          <a className="mobile-logo" href="#">
             <img src="/assets/imgs/logo-light.png" alt="logo" />
-          </Link>
+          </a>
           <button className="mobile-menu-close" onClick={toggleMobileMenu} aria-label="Close menu">
             <i className="fas fa-times"></i>
           </button>
@@ -104,29 +102,29 @@ function Navbar() {
         <div className="mobile-menu-content">
           <ul className="mobile-nav">
             <li>
-              <Link to="/services" className="mobile-nav-link" onClick={toggleMobileMenu}>
+              <a href="/services" onClick={toggleMobileMenu}>
                 SERVICES
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="/works" className="mobile-nav-link" onClick={toggleMobileMenu}>
+              <a href="/portfolio-masonry" onClick={toggleMobileMenu}>
                 OUR WORK
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="/about" className="mobile-nav-link" onClick={toggleMobileMenu}>
+              <a href="/about" onClick={toggleMobileMenu}>
                 ABOUT US
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="/insights" className="mobile-nav-link" onClick={toggleMobileMenu}>
+              <a href="/insights" onClick={toggleMobileMenu}>
                 INSIGHTS
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="/contact" className="mobile-nav-link" onClick={toggleMobileMenu}>
+              <a href="/contact" onClick={toggleMobileMenu}>
                 CONTACT US
-              </Link>
+              </a>
             </li>
           </ul>
 
@@ -143,16 +141,16 @@ function Navbar() {
           <div className="mobile-menu-footer">
             <div className="social-links">
               <span className="social-label">S:</span>
-              <a href="https://www.instagram.com/liquidata" target="_blank" rel="noopener noreferrer">
+              <a href="#" target="_blank" rel="noopener noreferrer">
                 Instagram
               </a>
-              <a href="https://www.behance.net/liquidata" target="_blank" rel="noopener noreferrer">
+              <a href="#" target="_blank" rel="noopener noreferrer">
                 Behance
               </a>
-              <a href="https://www.facebook.com/liquidata" target="_blank" rel="noopener noreferrer">
+              <a href="#" target="_blank" rel="noopener noreferrer">
                 Facebook
               </a>
-              <a href="https://www.linkedin.com/company/liquidata" target="_blank" rel="noopener noreferrer">
+              <a href="#" target="_blank" rel="noopener noreferrer">
                 LinkedIn
               </a>
             </div>
@@ -201,71 +199,6 @@ function Navbar() {
           height: auto;
         }
 
-        .custom-toggler {
-          padding: 15px;
-          border: none;
-          background: transparent;
-          outline: none !important;
-          cursor: pointer;
-          margin-right: 0;
-          position: relative;
-          width: 50px;
-          height: 50px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .hamburger-box {
-          width: 30px;
-          height: 24px;
-          position: relative;
-          display: inline-block;
-        }
-
-        .hamburger-inner {
-          width: 100%;
-          height: 2px;
-          background-color: #fff;
-          position: absolute;
-          left: 0;
-          top: 50%;
-          transform: translateY(-50%);
-          transition: background-color 0.2s ease-in-out;
-        }
-
-        .hamburger-inner::before,
-        .hamburger-inner::after {
-          content: '';
-          display: block;
-          width: 100%;
-          height: 2px;
-          background-color: #fff;
-          position: absolute;
-          left: 0;
-          transition: transform 0.2s ease-in-out;
-        }
-
-        .hamburger-inner::before {
-          top: -8px;
-        }
-
-        .hamburger-inner::after {
-          bottom: -8px;
-        }
-
-        .custom-toggler[aria-expanded="true"] .hamburger-inner {
-          background-color: transparent;
-        }
-
-        .custom-toggler[aria-expanded="true"] .hamburger-inner::before {
-          transform: translateY(8px) rotate(45deg);
-        }
-
-        .custom-toggler[aria-expanded="true"] .hamburger-inner::after {
-          transform: translateY(-8px) rotate(-45deg);
-        }
-
         .mobile-menu-close {
           background: none;
           border: none;
@@ -303,7 +236,7 @@ function Navbar() {
           }
         }
 
-        .mobile-nav-link {
+        .mobile-nav a {
           color: #fff;
           text-decoration: none;
           font-size: 42px;
@@ -311,7 +244,7 @@ function Navbar() {
           transition: color 0.3s ease;
         }
 
-        .mobile-nav-link:hover {
+        .mobile-nav a:hover {
           color: #c9fd02;
         }
 
@@ -338,42 +271,20 @@ function Navbar() {
           .navbar-collapse {
             display: none !important;
           }
-
-          .navbar-collapse.show {
-            display: block !important;
-          }
-
+          
           .d-lg-block {
             display: none !important;
           }
         }
 
         @media (max-width: 480px) {
-          .mobile-nav-link {
+          .mobile-nav a {
             font-size: 32px;
           }
-
+          
           .mobile-cta :global(.btn) {
             width: 100%;
             padding: 15px 20px;
-          }
-        }
-
-        .logo {
-          display: flex;
-          align-items: center;
-          height: 100%;
-        }
-
-        .logo img {
-          max-height: 40px;
-          width: auto;
-          object-fit: contain;
-        }
-
-        @media (max-width: 991px) {
-          .logo img {
-            max-height: 35px;
           }
         }
       `}</style>

@@ -17,7 +17,7 @@ import Feat from '../components/home-main/Feat';
 import Marq from '../components/home-main/Marq';
 import WOW from 'wowjs';
 import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // import { ScrollSmoother } from 'gsap-trial/ScrollSmoother';
 
 import { useGSAP } from '@gsap/react';
@@ -89,7 +89,7 @@ export default function Home() {
               <Team />
               <Testimonials />
               <Clients />
-              <Marq2 data={['Get In Touch', 'Contact Us']} />
+              <Marq2 />
             </main>
             <Footer />
           </div>

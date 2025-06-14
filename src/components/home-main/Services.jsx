@@ -1,11 +1,8 @@
 'use client';
 import React from 'react';
 import data from '../../data/services';
-import { Navigation } from 'swiper/modules';
+import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-
 function Services() {
   const swiperOptions = {
     modules: [Navigation],

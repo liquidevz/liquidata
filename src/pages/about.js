@@ -24,6 +24,7 @@ import { useEffect, useRef } from 'react';
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 export default function PageAbout() {
   const main = useRef();
+  const smoother = useRef();
 
   useEffect(() => {
     const loadScript = (src) => {
@@ -116,7 +117,7 @@ export default function PageAbout() {
               <Testimonials />
               <Clients />
               <Blog />
-              <Marq2 data={['About Us', 'Learn More']} />
+              <Marq2 />
             </main>
             <Footer />
           </div>

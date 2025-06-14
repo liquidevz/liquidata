@@ -1,10 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import { api } from '../../services/api';
 
 // Default data to use as fallback
@@ -29,16 +26,30 @@ const defaultTestimonialsData = [
 
 function Testimonials() {
   const [testimonials, setTestimonials] = useState(defaultTestimonialsData);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
+        setLoading(true);
         const response = await api.getTestimonials();
-        if (Array.isArray(response.data) && response.data.length > 0) {
-          setTestimonials(response.data);
-        }
+        // Ensure we always have an array with at least the default data
+        const data = Array.isArray(response.data) && response.data.length > 0 
+          ? response.data.map(testimonial => ({
+              ...testimonial,
+              // Ensure imageUrl exists and has the correct format
+              imageUrl: testimonial.imageUrl || testimonial.image || '/assets/imgs/testim/placeholder.jpg'
+            }))
+          : defaultTestimonialsData;
+        setTestimonials(data);
+        setError(null);
       } catch (error) {
         console.error('Failed to fetch testimonials:', error);
+        setError('Failed to load testimonials');
+        setTestimonials(defaultTestimonialsData);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -59,6 +70,16 @@ function Testimonials() {
     },
   };
 
+  if (loading) {
+    return (
+      <section className="testimonials">
+        <div className="container section-padding bord-top-grd">
+          <div className="text-center">Loading testimonials...</div>
+        </div>
+      </section>
+    );
+  }
+
   if (!Array.isArray(testimonials) || testimonials.length === 0) {
     return null;
   }
@@ -66,6 +87,11 @@ function Testimonials() {
   return (
     <section className="testimonials">
       <div className="container section-padding bord-top-grd">
+        {error && (
+          <div className="alert alert-warning text-center mb-4">
+            {error}
+          </div>
+        )}
         <div className="row">
           <div className="col-lg-4 md-mb50">
             <div className="img-full">
@@ -106,7 +132,7 @@ function Testimonials() {
                                   alt={testimonial.name}
                                   onError={(e) => {
                                     e.target.onerror = null;
-                                    e.target.src = '/assets/imgs/testim/t1.jpg';
+                                    e.target.src = '/assets/imgs/testim/placeholder.jpg';
                                   }}
                                 />
                               </div>

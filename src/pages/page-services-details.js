@@ -110,7 +110,7 @@ export default function PageServicesDetails() {
               <Intro />
               <Feat />
               <Intro2 />
-              <Marq2 data={['Our Services', 'Learn More']} />
+              <Marq2 />
             </main>
             <Footer />
           </div>

@@ -1,9 +1,7 @@
 'use client';
 import React from 'react';
+import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
 
 function Testimonials() {
   const swiperOptions = {
@@ -75,9 +73,9 @@ function Testimonials() {
                   <h6 className="sub-title mb-15">Design Quality</h6>
                   <div className="text">
                     <p>
-                      " I have been hiring people in this space for a number of
+                      “ I have been hiring people in this space for a number of
                       years and I have never seen this level of
-                      professionalism."
+                      professionalism.”
                     </p>
                   </div>
                 </div>
@@ -104,9 +102,9 @@ function Testimonials() {
                   <h6 className="sub-title mb-15">Design Quality</h6>
                   <div className="text">
                     <p>
-                      " I have been hiring people in this space for a number of
+                      “ I have been hiring people in this space for a number of
                       years and I have never seen this level of professionalism.
-                      "
+                      ”
                     </p>
                   </div>
                 </div>
@@ -133,9 +131,9 @@ function Testimonials() {
                   <h6 className="sub-title mb-15">Design Quality</h6>
                   <div className="text">
                     <p>
-                      " I have been hiring people in this space for a number of
+                      “ I have been hiring people in this space for a number of
                       years and I have never seen this level of professionalism.
-                      "
+                      ”
                     </p>
                   </div>
                 </div>

@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 
 function Header() {
   return (
@@ -27,12 +27,7 @@ function Header() {
           <div className="col-lg-8">
             <div className="img">
               <img src="/assets/imgs/header/4.jpg" alt="" />
-              <a 
-                href="https://youtu.be/AzwC6umvd1s" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="vid"
-              >
+              <a href="https://youtu.be/AzwC6umvd1s" className="vid">
                 <div className="icon">
                   <i className="fas fa-play"></i>
                 </div>

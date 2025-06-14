@@ -1,12 +1,8 @@
 'use client';
 import React from 'react';
 import data from '../../data/portfolios/works1';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
 function Portfolio() {
   const marquess = ['Our Portfolio']; // Replace with your actual array
   const AllMarquess = Array(10).fill(marquess).flat();

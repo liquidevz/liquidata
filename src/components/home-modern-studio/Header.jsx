@@ -1,13 +1,8 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 
-import { Autoplay, EffectFade, Keyboard, Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, EffectFade, Keyboard, Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
 import loadBackgroudImages from '../../common/loadBackgroudImages';
 function Header() {
   const [galleryImg, setGalleryImg] = useState(null);
@@ -101,9 +96,7 @@ function Header() {
                     data-background="/assets/imgs/header/s1.jpg"
                     data-overlay-dark="3"
                   >
-                    <Link to="/project-details" className="project-link" aria-label="View Project Details">
-                      View Project
-                    </Link>
+                    <a href="/project-details"></a>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
@@ -112,9 +105,7 @@ function Header() {
                     data-background="/assets/imgs/header/s2.jpg"
                     data-overlay-dark="3"
                   >
-                    <Link to="/project-details" className="project-link" aria-label="View Project Details">
-                      View Project
-                    </Link>
+                    <a href="/project-details"></a>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
@@ -123,9 +114,7 @@ function Header() {
                     data-background="/assets/imgs/header/s3.jpg"
                     data-overlay-dark="3"
                   >
-                    <Link to="/project-details" className="project-link" aria-label="View Project Details">
-                      View Project
-                    </Link>
+                    <a href="/project-details"></a>
                   </div>
                 </SwiperSlide>
               </Swiper>
@@ -143,9 +132,17 @@ function Header() {
                 <h1>
                   Mails <br /> Mobile app
                 </h1>
-                <Link to="#0" className="hover-this" aria-label="View Project">
-                  <div className="text-marq">View Project</div>
-                </Link>
+                <a
+                  href="/project-details"
+                  className="butn-crev d-flex align-items-center mt-30"
+                >
+                  <span className="hover-this">
+                    <span className="circle hover-anim">
+                      <i className="ti-arrow-top-right"></i>
+                    </span>
+                  </span>
+                  <span className="text">View Project</span>
+                </a>
               </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -154,9 +151,17 @@ function Header() {
                 <h1>
                   Mails <br /> Mobile app
                 </h1>
-                <Link to="#0" className="hover-this" aria-label="View Project">
-                  <div className="text-marq">View Project</div>
-                </Link>
+                <a
+                  href="/project-details"
+                  className="butn-crev d-flex align-items-center mt-30"
+                >
+                  <span className="hover-this">
+                    <span className="circle hover-anim">
+                      <i className="ti-arrow-top-right"></i>
+                    </span>
+                  </span>
+                  <span className="text">View Project</span>
+                </a>
               </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -165,9 +170,17 @@ function Header() {
                 <h1>
                   Mails <br /> Mobile app
                 </h1>
-                <Link to="#0" className="hover-this" aria-label="View Project">
-                  <div className="text-marq">View Project</div>
-                </Link>
+                <a
+                  href="/project-details"
+                  className="butn-crev d-flex align-items-center mt-30"
+                >
+                  <span className="hover-this">
+                    <span className="circle hover-anim">
+                      <i className="ti-arrow-top-right"></i>
+                    </span>
+                  </span>
+                  <span className="text">View Project</span>
+                </a>
               </div>
             </SwiperSlide>
           </Swiper>

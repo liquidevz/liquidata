@@ -6,50 +6,56 @@ export const LoadingProvider = ({ children }) => {
   const location = useLocation();
 
   useEffect(() => {
+    // Handle initial page load
     const handleInitialLoad = () => {
-      // Function to check if a stylesheet is loaded
-      const isStylesheetLoaded = (link) => {
+      // Add loading class to body
+      document.body.classList.add('loading');
+      
+      // Ensure all stylesheets are loaded
+      const styleSheets = Array.from(document.styleSheets);
+      const loadedStyles = styleSheets.every(sheet => {
         try {
-          return link.sheet !== null;
+          return sheet.cssRules.length > 0;
         } catch (e) {
           return false;
         }
-      };
+      });
 
-      // Check if all stylesheets are loaded
-      const checkStylesheets = () => {
-        const styleLinks = document.querySelectorAll('link[rel="stylesheet"]');
-        return Array.from(styleLinks).every(isStylesheetLoaded);
-      };
-
-      // Function to check loading status
-      const checkLoading = () => {
-        if (checkStylesheets()) {
-          setIsLoading(false);
-        } else {
-          setTimeout(checkLoading, 100);
-        }
-      };
-
-      // Start checking
-      checkLoading();
+      if (loadedStyles) {
+        // Remove loading class and show content
+        document.body.classList.remove('loading');
+        setIsLoading(false);
+      }
     };
 
     // Handle route changes
     const handleRouteChange = () => {
       setIsLoading(true);
+      document.body.classList.add('loading');
+      
+      // Short timeout to ensure smooth transition
       setTimeout(() => {
+        document.body.classList.remove('loading');
         setIsLoading(false);
-      }, 300);
+      }, 200);
     };
 
-    // Initial load
+    // Add preload class to prevent transition flashes
+    document.documentElement.classList.add('preload');
+    
+    // Initial load handling
     if (document.readyState === 'complete') {
       handleInitialLoad();
     } else {
       window.addEventListener('load', handleInitialLoad);
     }
 
+    // Remove preload class after initial load
+    setTimeout(() => {
+      document.documentElement.classList.remove('preload');
+    }, 300);
+
+    // Cleanup
     return () => {
       window.removeEventListener('load', handleInitialLoad);
     };
@@ -57,23 +63,12 @@ export const LoadingProvider = ({ children }) => {
 
   // Handle route changes
   useEffect(() => {
-    const handleRouteChange = () => {
-      setIsLoading(true);
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 300);
-    };
-
     handleRouteChange();
   }, [location]);
 
-  if (isLoading) {
-    return (
-      <div className="loading-screen">
-        <div className="loader"></div>
-      </div>
-    );
-  }
-
-  return children;
+  return (
+    <div style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.2s ease' }}>
+      {children}
+    </div>
+  );
 }; 
