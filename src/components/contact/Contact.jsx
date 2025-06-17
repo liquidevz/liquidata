@@ -37,16 +37,11 @@ function Contact() {
     setLoading(true);
     setMessage("");
 
-    const token = localStorage.getItem("adminToken");
-    const companyId = process.env.NEXT_PUBLIC_COMPANY_ID;
-
     try {
-      const res = await fetch(`${process.env.API_BASE_URL}`, {
+      const res = await fetch("https://form.thetaphaus.in/send-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: token ? `Bearer ${token}` : "",
-          "X-Company-ID": companyId,
         },
         body: JSON.stringify(formData),
       });
@@ -75,7 +70,6 @@ function Contact() {
 
     setLoading(false);
   };
-
   return (
     <section className="contact-section">
       <div className="container">
