@@ -177,6 +177,31 @@ function Navbar() {
           .mobile-menu-overlay {
             display: block;
           }
+          
+          :global(.navbar) {
+            padding: 1px 0;
+          }
+          
+          :global(.navbar .container) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 50px;
+          }
+
+          :global(.navbar .logo) {
+            
+            display: flex;
+            align-items: center;
+            margin: 0 0 0 30px;
+            padding: 0;
+          }
+
+          :global(.navbar .logo img) {
+            padding-top: 10px;
+            max-height: 40px;
+            width: auto;
+          }
         }
 
         .mobile-menu-overlay.active {
@@ -194,7 +219,8 @@ function Navbar() {
           max-width: 100px;
         }
 
-        .mobile-logo img {
+        .mobile-logo 
+          padding-top: 10px;
           width: 100%;
           height: auto;
         }
