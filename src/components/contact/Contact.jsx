@@ -41,7 +41,7 @@ function Contact() {
     const companyId = process.env.NEXT_PUBLIC_COMPANY_ID;
 
     try {
-      const res = await fetch(`process.env.API_BASE_URL`, {
+      const res = await fetch(`${process.env.API_BASE_URL}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
