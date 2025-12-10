@@ -1,0 +1,50 @@
+{
+  "name": "liquidata",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "build:staging": "NODE_ENV=staging next build",
+    "build:production": "NODE_ENV=production next build",
+    "start": "next start",
+    "start:staging": "NODE_ENV=staging next start -p 3000",
+    "start:production": "NODE_ENV=production next start -p 3000",
+    "lint": "next lint",
+    "deploy:staging": "npm run build:staging && npm run start:staging",
+    "deploy:production": "npm run build:production && npm run start:production"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@radix-ui/react-hover-card": "^1.1.15",
+    "@tinymce/tinymce-react": "^6.3.0",
+    "class-variance-authority": "^0.7.0",
+    "framer-motion": "^11.18.2",
+    "gtag": "^1.0.1",
+    "lucide-react": "^0.545.0",
+    "mini-svg-data-uri": "^1.4.4",
+    "next": "14.1.0",
+    "next-seo": "^6.4.0",
+    "prism-react-renderer": "^2.4.1",
+    "qss": "^3.0.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-icons": "^5.5.0",
+    "react-use-measure": "^2.1.1",
+    "swr": "^2.3.6",
+    "tailwind-merge": "^2.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.0",
+    "postcss": "^8",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  }
+}

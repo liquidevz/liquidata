@@ -1,0 +1,333 @@
+/* Admin Panel Global Styles */
+
+/* Enhanced Scrollbar Styling */
+.admin-scrollbar::-webkit-scrollbar,
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.admin-scrollbar::-webkit-scrollbar-track,
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.admin-scrollbar::-webkit-scrollbar-thumb,
+.scrollbar-thin::-webkit-scrollbar-thumb,
+.scrollbar-thumb-\[\#2a2b35\]::-webkit-scrollbar-thumb {
+  background: #2a2b35;
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
+
+.admin-scrollbar::-webkit-scrollbar-thumb:hover,
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #3a3b45;
+}
+
+.scrollbar-track-transparent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Mobile scrollbar */
+@media (max-width: 768px) {
+  .admin-scrollbar::-webkit-scrollbar,
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+/* TinyMCE Editor Dark Theme */
+.tox .tox-editor-header {
+  background-color: #1e1f26 !important;
+  border-color: #2a2b35 !important;
+}
+
+.tox .tox-toolbar {
+  background-color: #1e1f26 !important;
+  border-color: #2a2b35 !important;
+}
+
+.tox .tox-edit-area {
+  background-color: #0a0b0d !important;
+}
+
+.tox .tox-edit-area__iframe {
+  background-color: #0a0b0d !important;
+}
+
+.tox .tox-statusbar {
+  background-color: #1e1f26 !important;
+  border-color: #2a2b35 !important;
+}
+
+/* Admin Card Animations */
+.admin-card-hover {
+  transition: all 0.3s ease;
+}
+
+.admin-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Status Badges */
+.status-published {
+  @apply bg-green-500/20 text-green-400 border border-green-500/30;
+}
+
+.status-draft {
+  @apply bg-yellow-500/20 text-yellow-400 border border-yellow-500/30;
+}
+
+.status-archived {
+  @apply bg-gray-500/20 text-gray-400 border border-gray-500/30;
+}
+
+/* Loading States */
+.admin-loading {
+  @apply animate-pulse bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800;
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Dark mode form inputs */
+.dark-input {
+  @apply bg-[#0a0b0d] border-[#2a2b35] text-white placeholder-gray-400;
+}
+
+.dark-input:focus {
+  @apply border-cyan-500 ring-2 ring-cyan-500/20;
+}
+
+/* Mobile-first responsive design helpers */
+.mobile-stack {
+  @apply flex flex-col gap-4;
+}
+
+@media (min-width: 640px) {
+  .mobile-stack {
+    @apply flex-row;
+  }
+}
+
+.mobile-full {
+  @apply w-full;
+}
+
+@media (min-width: 640px) {
+  .mobile-full {
+    @apply w-auto;
+  }
+}
+
+/* Enhanced animations */
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Enhanced Form Validation */
+.form-error {
+  @apply border-red-500/50 bg-red-500/10 focus:border-red-500 focus:ring-red-500/20;
+}
+
+.form-success {
+  @apply border-green-500/50 bg-green-500/10 focus:border-green-500 focus:ring-green-500/20;
+}
+
+.form-field-focus {
+  @apply focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20;
+}
+
+/* Form animations */
+.form-field-container {
+  @apply transition-all duration-200;
+}
+
+.form-field-container:focus-within {
+  @apply transform scale-[1.01];
+}
+
+/* Enhanced Responsive Grid */
+.admin-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.admin-grid-mobile {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 768px) {
+  .admin-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .admin-grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .admin-grid-cols-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1024px) {
+  .admin-grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Typography */
+.admin-heading {
+  @apply text-2xl font-bold text-white mb-2;
+}
+
+.admin-subheading {
+  @apply text-lg font-semibold text-gray-300 mb-4;
+}
+
+.admin-text {
+  @apply text-gray-400 leading-relaxed;
+}
+
+/* Mobile Typography */
+@media (max-width: 640px) {
+  .admin-heading {
+    @apply text-xl;
+  }
+  
+  .admin-subheading {
+    @apply text-base;
+  }
+}
+
+/* Touch targets for mobile */
+@media (max-width: 768px) {
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  
+  button, 
+  .clickable {
+    @apply min-h-[44px];
+  }
+}
+
+/* Focus states for accessibility */
+.focus-visible {
+  @apply focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-[#0a0b0d];
+}
+
+/* Loading states */
+.loading-shimmer {
+  @apply animate-pulse bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800;
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Card hover effects */
+.admin-card {
+  @apply transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 hover:-translate-y-1;
+}
+
+/* Status indicators */
+.status-indicator {
+  @apply w-2 h-2 rounded-full animate-pulse;
+}
+
+.status-online {
+  @apply bg-green-400;
+}
+
+.status-offline {
+  @apply bg-red-400;
+}
+
+.status-warning {
+  @apply bg-yellow-400;
+}
+
+/* Utility classes */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Enhanced Buttons */
+.admin-btn-primary {
+  @apply px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg font-semibold hover:from-cyan-600 hover:to-blue-700 transition-all shadow-lg shadow-cyan-500/25 active:scale-95;
+}
+
+.admin-btn-secondary {
+  @apply px-6 py-3 bg-[#1e1f26] text-gray-200 rounded-lg font-semibold hover:bg-[#252630] transition-all border border-[#2a2b35] active:scale-95;
+}
+
+.admin-btn-danger {
+  @apply px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg font-semibold hover:from-red-600 hover:to-red-700 transition-all shadow-lg shadow-red-500/25 active:scale-95;
+}
+
+.admin-btn-ghost {
+  @apply px-4 py-2 text-gray-400 hover:text-white hover:bg-[#1e1f26] rounded-lg transition-all;
+}
+
+/* Mobile button adjustments */
+@media (max-width: 640px) {
+  .admin-btn-primary,
+  .admin-btn-secondary,
+  .admin-btn-danger {
+    @apply w-full justify-center;
+  }
+  
+  .admin-btn-group {
+    @apply flex flex-col gap-3;
+  }
+  
+  .admin-btn-group-reverse {
+    @apply flex flex-col-reverse gap-3;
+  }
+}
