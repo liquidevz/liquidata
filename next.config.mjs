@@ -3,7 +3,13 @@ const nextConfig = {
   output: 'standalone',
   poweredByHeader: false,
   compress: true,
-  
+
+  // Explicitly expose environment variables to the client
+  env: {
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+    NEXT_PUBLIC_TINYMCE_API_KEY: process.env.NEXT_PUBLIC_TINYMCE_API_KEY,
+  },
+
   images: {
     domains: ['localhost', 'images.unsplash.com', '72.60.223.110'],
     formats: ['image/webp', 'image/avif'],
