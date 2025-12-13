@@ -17,13 +17,21 @@ export default function AdminLogin() {
     // Check if admin setup is needed
     const checkSetup = async () => {
       try {
+        console.log('Checking admin setup status...');
         const data = await publicFetch('/api/admin/setup/check');
+        console.log('Setup check response:', data);
+
         if (data.needsSetup) {
+          console.log('Setup needed, redirecting to setup page...');
           // Redirect to setup page
           router.push('/admin/setup');
+        } else {
+          console.log('Setup already completed');
         }
       } catch (error) {
-        console.error('Setup check error:', error);
+        console.log('Setup check failed (this is normal if setup endpoint doesn\'t exist):', error);
+        // If setup check fails, assume setup is complete and allow login
+        // This handles cases where the backend doesn't have a setup endpoint
       } finally {
         setCheckingSetup(false);
       }
@@ -38,21 +46,47 @@ export default function AdminLogin() {
     setLoading(true);
 
     try {
+      console.log('Attempting login...');
+      console.log('API Base URL:', process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001');
+      console.log('Login endpoint:', '/api/admin/login');
+
       const data = await publicFetch('/api/admin/login', {
         method: 'POST',
         body: JSON.stringify({ username, password }),
       });
 
+      console.log('Login response:', data);
+
       if (data.token) {
         // Store token in localStorage
         localStorage.setItem('adminToken', data.token);
         localStorage.setItem('adminUser', JSON.stringify(data.admin));
-        
+
+        console.log('Login successful, redirecting to dashboard...');
         // Redirect to dashboard
         router.push('/admin');
+      } else {
+        throw new Error('No token received from server');
       }
     } catch (err: any) {
-      setError(err.message || 'Failed to connect to server');
+      console.error('Login error:', err);
+
+      // Provide more specific error messages
+      let errorMessage = 'Failed to connect to server';
+
+      if (err.message) {
+        errorMessage = err.message;
+      }
+
+      if (err.message?.includes('fetch')) {
+        errorMessage = 'Network error: Unable to connect to API server. Please check your connection.';
+      }
+
+      if (err.message?.includes('CORS')) {
+        errorMessage = 'CORS error: API server is not allowing requests from this origin.';
+      }
+
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
