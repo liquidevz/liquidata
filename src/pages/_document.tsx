@@ -5,6 +5,7 @@ export default function Document() {
   return (
     <Html lang="en" className="scroll-smooth">
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Transform your business with cutting-edge data analytics and AI-powered insights. Liquidata provides enterprise-grade data solutions." />
         <meta name="keywords" content="data analytics, AI insights, business intelligence, data solutions, enterprise software" />
         <meta name="robots" content="index,follow" />
@@ -23,6 +24,17 @@ export default function Document() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(structuredData),
+          }}
+        />
+        
+        {/* Viewport Zoom for Desktop Only */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (window.innerWidth >= 1024) {
+                document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=0.9');
+              }
+            `,
           }}
         />
         

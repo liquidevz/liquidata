@@ -91,12 +91,12 @@ export default function GeminiChatbot() {
       {/* Chat Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 z-50 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition-all duration-300 ${
+        className={`fixed bottom-6 right-6 z-50 bg-blue-600 hover:bg-blue-700 text-white p-2.5 rounded-full shadow-lg transition-all duration-300 ${
           isOpen ? 'scale-0' : 'scale-100'
         }`}
         aria-label="Open chat"
       >
-        <MessageCircle size={24} />
+        <MessageCircle size={20} />
       </button>
 
       {/* Chat Window */}

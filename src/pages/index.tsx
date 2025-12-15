@@ -12,6 +12,7 @@ import { structuredData } from "@/seo";
 import { event } from "@/lib/gtag";
 import { Barlow } from "next/font/google";
 import { useEffect } from "react";
+import { Content } from "@/components/hero/Content";
 
 const barlowFont = Barlow({
   subsets: ["latin"],

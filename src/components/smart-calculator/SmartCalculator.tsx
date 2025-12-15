@@ -691,7 +691,7 @@ export default function SmartCalculator() {
   const isEstimateStep = currentStepData?.type === 'estimate'
 
   return (
-    <div className="min-h-screen w-full relative overflow-hidden bg-[#07071a] p-0 mt-10">
+    <div className="min-h-screen w-full relative overflow-hidden bg-[#07071a] p-0 mt-0 md:mt-10">
       {/* Background decorations */}
       <div className="pointer-events-none absolute -top-32 -left-32 h-72 w-72 rounded-full blur-[80px] opacity-40 bg-fuchsia-700/20" />
       <div className="pointer-events-none absolute -bottom-32 -right-32 h-80 w-80 rounded-full blur-[90px] opacity-40 bg-purple-700/20" />
@@ -705,11 +705,11 @@ export default function SmartCalculator() {
         <ProgressMobile step={state.step} total={currentSteps.length} />
       </div>
 
-      <div className="w-full px-3 md:px-4 pt-4 pb-4 md:pt-6 md:pb-12">
+      <div className="w-full px-2 sm:px-3 md:px-4 pt-2 pb-4 md:pt-6 md:pb-12">
         <div className="grid grid-cols-1 xl:grid-cols-[1fr_300px] gap-4 h-full">
           <div className="relative">
             {/* Main white card */}
-            <div className="relative overflow-hidden border-0 bg-white shadow-2xl rounded-[16px] md:rounded-[28px] min-h-[85vh] max-h-[90vh] flex flex-col">
+            <div className="relative overflow-hidden border-0 bg-white shadow-2xl rounded-[12px] sm:rounded-[16px] md:rounded-[28px] min-h-[80vh] sm:min-h-[85vh] max-h-[95vh] flex flex-col">
               {/* Tab notch */}
               <div className="pointer-events-none absolute -top-6 right-28 h-12 w-28 rounded-b-[24px] bg-[#07071a]" />
 
@@ -740,15 +740,15 @@ export default function SmartCalculator() {
                 </aside>
 
                 {/* Main content */}
-                <section ref={contentRef} className="p-3 md:p-6 lg:p-8 flex flex-col h-full overflow-auto">
+                <section ref={contentRef} className="p-4 sm:p-5 md:p-6 lg:p-8 flex flex-col h-full overflow-auto">
                   {/* Header with step indicator matching reference */}
-                  <div className="flex items-center justify-between gap-4 mb-6">
+                  <div className="flex items-center justify-between gap-2 sm:gap-4 mb-4 sm:mb-6">
                     <div className="flex items-center gap-2 flex-1">
                       {/* Step indicator dot - exact match from reference */}
                       <div className="flex items-center justify-center w-4 h-4 rounded-full" style={{ backgroundColor: 'rgb(56 39 199)' }}>
                         <div className="w-2 h-2 rounded-full bg-white"></div>
                       </div>
-                      <span className="text-lg font-medium text-slate-900 flex-1">
+                      <span className="text-sm sm:text-base md:text-lg font-medium text-slate-900 flex-1">
                         {currentStepData?.title || "Loading..."}
                       </span>
                     </div>
@@ -774,12 +774,12 @@ export default function SmartCalculator() {
 
                   {/* Main question */}
                   <div className="mb-6">
-                    <h2 className="text-2xl md:text-3xl font-medium tracking-tight text-slate-900 mb-2">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-slate-900 mb-2">
                       {getHeadlineForStep(currentStepData?.type)}
                     </h2>
                   </div>
 
-                  <div className="mt-4 md:mt-6 flex-1 overflow-auto">
+                  <div className="mt-3 sm:mt-4 md:mt-6 flex-1 overflow-auto">
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={`${state.step}-${currentStepData?.type}`}
@@ -1066,16 +1066,16 @@ export default function SmartCalculator() {
                                 {submitMessage.text}
                               </div>
                             )}
-                            <div className="p-6 border border-slate-200 rounded-2xl shadow-sm bg-white">
-                              <div className="flex items-center justify-between mb-6">
+                            <div className="p-4 sm:p-6 border border-slate-200 rounded-xl sm:rounded-2xl shadow-sm bg-white">
+                              <div className="flex items-center justify-between mb-4 sm:mb-6">
                                 <div>
-                                  <h3 className="text-lg font-semibold text-slate-900">Your Project Estimate</h3>
+                                  <h3 className="text-base sm:text-lg font-semibold text-slate-900">Your Project Estimate</h3>
                                   <p className="text-sm text-slate-500">Based on your selections and requirements</p>
                                 </div>
                                 <span className="bg-[#3f2ae2] text-white px-3 py-1 rounded-full text-sm">Final</span>
                               </div>
                               <div className="text-center">
-                                <div className="text-4xl font-bold text-slate-900 mb-2">
+                                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-2">
                                   {currency(estimate.low)} - {currency(estimate.high)}
                                 </div>
                                 <p className="text-slate-600">Estimated project cost</p>
@@ -1088,12 +1088,12 @@ export default function SmartCalculator() {
                   </div>
 
                   {/* Bottom navigation - exact match from reference */}
-                  <div className="sticky bottom-0 bg-white pt-4 pb-2 flex items-center justify-between gap-4 border-t border-slate-100 mt-6">
+                  <div className="sticky bottom-0 bg-white pt-3 sm:pt-4 pb-2 flex items-center justify-between gap-2 sm:gap-4 border-t border-slate-100 mt-4 sm:mt-6">
                     {/* Back button - exact match from reference */}
                     <button
                       onClick={() => dispatch({ type: 'PREV_STEP' })}
                       disabled={state.step === 0}
-                      className="px-8 py-3 border border-blue-300 rounded-full text-slate-700 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed uppercase text-sm font-medium"
+                      className="px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 border border-blue-300 rounded-full text-slate-700 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed uppercase text-xs sm:text-sm font-medium"
                     >
                       Back
                     </button>
@@ -1103,7 +1103,7 @@ export default function SmartCalculator() {
                         <button
                           onClick={() => dispatch({ type: 'NEXT_STEP' })}
                           disabled={!canNext}
-                          className="px-8 py-3 rounded-full text-white disabled:opacity-50 disabled:cursor-not-allowed uppercase text-sm font-medium min-w-[120px]"
+                          className="px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-full text-white disabled:opacity-50 disabled:cursor-not-allowed uppercase text-xs sm:text-sm font-medium min-w-[100px] sm:min-w-[120px]"
                           style={{
                             backgroundColor: canNext ? 'rgb(56, 39, 199)' : undefined,
                             border: '1px solid currentColor'
@@ -1115,7 +1115,7 @@ export default function SmartCalculator() {
                         <button
                           onClick={handleSubmitCalculator}
                           disabled={submitting}
-                          className="px-8 py-3 rounded-full text-white uppercase text-sm font-medium min-w-[180px] disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-full text-white uppercase text-xs sm:text-sm font-medium min-w-[140px] sm:min-w-[180px] disabled:opacity-50 disabled:cursor-not-allowed"
                           style={{
                             backgroundColor: 'rgb(56, 39, 199)',
                             border: '1px solid currentColor'
