@@ -23,7 +23,7 @@
     "gtag": "^1.0.1",
     "lucide-react": "^0.545.0",
     "mini-svg-data-uri": "^1.4.4",
-    "next": "14.1.0",
+    "next": "14.2.22",
     "next-seo": "^6.4.0",
     "prism-react-renderer": "^2.4.1",
     "qss": "^3.0.0",
