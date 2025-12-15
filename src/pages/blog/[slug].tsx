@@ -215,20 +215,31 @@ export default function BlogDetailPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="max-w-3xl mx-auto prose prose-invert prose-lg prose-zinc
-                prose-headings:font-bold prose-headings:tracking-tight
-                prose-h2:text-4xl prose-h2:mt-12 prose-h2:mb-6
-                prose-h3:text-3xl prose-h3:mt-10 prose-h3:mb-4
-                prose-p:text-zinc-300 prose-p:leading-relaxed prose-p:mb-6
-                prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
-                prose-strong:text-white prose-strong:font-semibold
-                prose-code:text-blue-400 prose-code:bg-zinc-900 prose-code:px-2 prose-code:py-1 prose-code:rounded
-                prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-zinc-800
-                prose-ul:list-disc prose-ul:pl-6 prose-ul:text-zinc-300
-                prose-ol:list-decimal prose-ol:pl-6 prose-ol:text-zinc-300
-                prose-li:mb-2
-                prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-zinc-400
-                prose-img:rounded-2xl prose-img:my-8"
+              className="max-w-4xl mx-auto px-4 sm:px-6
+                [&>*]:text-zinc-200
+                [&_h1]:text-4xl sm:[&_h1]:text-5xl md:[&_h1]:text-6xl [&_h1]:font-bold [&_h1]:mt-16 [&_h1]:mb-10 [&_h1]:leading-[1.15] [&_h1]:text-white
+                [&_h2]:text-3xl sm:[&_h2]:text-4xl md:[&_h2]:text-5xl [&_h2]:font-bold [&_h2]:mt-20 [&_h2]:mb-8 [&_h2]:leading-[1.2] [&_h2]:bg-gradient-to-r [&_h2]:from-white [&_h2]:to-zinc-400 [&_h2]:bg-clip-text [&_h2]:text-transparent
+                [&_h3]:text-2xl sm:[&_h3]:text-3xl md:[&_h3]:text-4xl [&_h3]:font-bold [&_h3]:mt-16 [&_h3]:mb-6 [&_h3]:text-zinc-100
+                [&_h4]:text-xl sm:[&_h4]:text-2xl md:[&_h4]:text-3xl [&_h4]:font-semibold [&_h4]:mt-12 [&_h4]:mb-5 [&_h4]:text-zinc-200
+                [&_p]:text-lg sm:[&_p]:text-xl md:[&_p]:text-2xl [&_p]:leading-[1.75] sm:[&_p]:leading-[1.8] [&_p]:mb-8 sm:[&_p]:mb-10 [&_p]:text-zinc-300 [&_p]:font-light
+                [&_a]:text-emerald-400 [&_a]:no-underline [&_a]:font-medium [&_a]:border-b-2 [&_a]:border-emerald-400/30 hover:[&_a]:border-emerald-400 [&_a]:transition-all [&_a]:pb-0.5
+                [&_strong]:text-white [&_strong]:font-bold
+                [&_em]:text-zinc-400 [&_em]:italic [&_em]:font-light
+                [&_code]:text-emerald-400 [&_code]:px-1 [&_code]:py-0.5 [&_code]:text-base sm:[&_code]:text-lg [&_code]:font-mono
+                [&_pre]:p-0 [&_pre]:my-8 sm:[&_pre]:my-10 [&_pre]:overflow-x-auto [&_pre]:bg-transparent
+                [&_ul]:list-none [&_ul]:pl-0 [&_ul]:space-y-4 sm:[&_ul]:space-y-5 [&_ul]:my-10 sm:[&_ul]:my-12
+                [&_ol]:list-none [&_ol]:pl-0 [&_ol]:space-y-4 sm:[&_ol]:space-y-5 [&_ol]:my-10 sm:[&_ol]:my-12 [&_ol]:counter-reset-[item]
+                [&_li]:text-lg sm:[&_li]:text-xl md:[&_li]:text-2xl [&_li]:leading-relaxed [&_li]:pl-10 sm:[&_li]:pl-12 [&_li]:relative [&_li]:text-zinc-300 [&_li]:font-light
+                [&_ul_li]:before:content-['✓'] [&_ul_li]:before:absolute [&_ul_li]:before:left-0 [&_ul_li]:before:text-emerald-400 [&_ul_li]:before:font-bold [&_ul_li]:before:text-2xl [&_ul_li]:before:top-0
+                [&_ol_li]:before:content-[counter(item)'.'] [&_ol_li]:before:counter-increment-[item] [&_ol_li]:before:absolute [&_ol_li]:before:left-0 [&_ol_li]:before:text-emerald-400 [&_ol_li]:before:text-lg sm:[&_ol_li]:before:text-xl [&_ol_li]:before:font-bold
+                [&_blockquote]:border-l-4 [&_blockquote]:border-emerald-500 [&_blockquote]:pl-6 sm:[&_blockquote]:pl-8 [&_blockquote]:italic [&_blockquote]:text-xl sm:[&_blockquote]:text-2xl [&_blockquote]:text-zinc-400 [&_blockquote]:my-10 sm:[&_blockquote]:my-12 [&_blockquote]:font-light
+                [&_img]:rounded-2xl [&_img]:my-12 sm:[&_img]:my-16 [&_img]:w-full
+                [&_hr]:border-0 [&_hr]:my-16 sm:[&_hr]:my-20 [&_hr]:h-0
+                [&_table]:border-collapse [&_table]:w-full [&_table]:my-10 sm:[&_table]:my-12 [&_table]:overflow-x-auto [&_table]:block sm:[&_table]:table
+                [&_th]:text-white [&_th]:font-bold [&_th]:p-3 sm:[&_th]:p-4 [&_th]:text-left [&_th]:border-b-2 [&_th]:border-zinc-700 [&_th]:text-base sm:[&_th]:text-lg
+                [&_td]:p-3 sm:[&_td]:p-4 [&_td]:border-b [&_td]:border-zinc-800 [&_td]:text-zinc-300 [&_td]:text-base sm:[&_td]:text-lg
+                [&>*:first-child]:mt-0
+                [&_*]:selection:bg-emerald-500/30 [&_*]:selection:text-white"
               dangerouslySetInnerHTML={{ __html: blog.content }}
             />
 
