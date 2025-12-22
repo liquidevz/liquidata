@@ -203,7 +203,7 @@ export const ContactForm = () => {
   const inputClassName = "w-full border-0 border-b-2 border-zinc-700/50 bg-transparent px-0 py-3 text-xl text-white placeholder-zinc-600 transition-all duration-300 focus:border-cyan-400 focus:outline-none focus:bg-cyan-500/5 focus:shadow-lg focus:shadow-cyan-500/20 hover:border-zinc-600 md:text-xl lg:text-xl [&:-webkit-autofill]:bg-zinc-800 [&:-webkit-autofill]:text-zinc-100 [&:-webkit-autofill]:shadow-[0_0_0_30px_rgb(39,39,42)_inset]";
 
   return (
-    <section className="bg-transparent pt-48 py-4 font-sans font-light relative">
+    <section className="bg-transparent pt-8 py-4 font-sans font-light relative">
       {/* Decorative elements */}
       <div className="absolute top-20 left-0 w-1 h-32 bg-gradient-to-b from-cyan-500/50 to-transparent" />
       <div className="absolute top-40 right-0 w-1 h-32 bg-gradient-to-b from-blue-500/50 to-transparent" />

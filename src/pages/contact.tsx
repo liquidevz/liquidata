@@ -1,9 +1,11 @@
 import { ContactForm } from "@/components/contact/ContactForm";
 import { SocialLinks } from "@/components/contact/SocialLinks";
 import { Footer } from "@/components/footer/Footer";
-import { PageHeader } from "@/components/utils/PageHeader";
 import SEOHead from "@/components/seo/SEOHead";
 import { Barlow } from "next/font/google";
+import { motion } from "framer-motion";
+import { MaxWidthWrapper } from "@/components/utils/MaxWidthWrapper";
+import { HeaderGrid } from "@/components/utils/HeaderGrid";
 
 const barlowFont = Barlow({
   subsets: ["latin"],
@@ -20,7 +22,19 @@ export default function Contact() {
         keywords="contact, software development, hardware solutions, custom development, business solutions"
       />
       <main className={barlowFont.className}>
-        <PageHeader title="Get in Touch" />
+        <section className="relative pt-32 pb-8 md:pt-40 md:pb-20">
+          <HeaderGrid />
+          <MaxWidthWrapper className="relative z-10">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-none mb-8 lg:mb-12"
+            >
+              Get in Touch
+            </motion.h1>
+          </MaxWidthWrapper>
+        </section>
         <ContactForm />
         <SocialLinks />
         <Footer />
