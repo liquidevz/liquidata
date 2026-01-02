@@ -4,7 +4,7 @@ import { publicFetch } from '../utils/adminApi';
 const Sitemap = () => null;
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const baseUrl = 'https://liquidata.com';
+  const baseUrl = 'https://liquidata.dev';
   const currentDate = new Date().toISOString();
 
   try {

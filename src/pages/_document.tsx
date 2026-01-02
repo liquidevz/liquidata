@@ -19,9 +19,9 @@ export default function Document() {
         <meta property="og:title" content="Liquidata - Custom Software & Hardware Solutions | Data Analytics & AI" />
         <meta property="og:description" content="Transform your business with cutting-edge data analytics, AI-powered insights, and custom software solutions." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://liquidata.com" />
+        <meta property="og:url" content="https://liquidata.dev" />
         <meta property="og:site_name" content="Liquidata" />
-        <meta property="og:image" content="https://liquidata.com/og-image.jpg" />
+        <meta property="og:image" content="https://liquidata.dev/og-image.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Liquidata - Modern Data Solutions" />
@@ -33,14 +33,14 @@ export default function Document() {
         <meta name="twitter:creator" content="@liquidata" />
         <meta name="twitter:title" content="Liquidata - Custom Software & Hardware Solutions" />
         <meta name="twitter:description" content="Transform your business with cutting-edge data analytics, AI-powered insights, and custom software solutions." />
-        <meta name="twitter:image" content="https://liquidata.com/og-image.jpg" />
+        <meta name="twitter:image" content="https://liquidata.dev/og-image.jpg" />
         
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/liquidata.svg" />
         
         {/* Canonical */}
-        <link rel="canonical" href="https://liquidata.com" />
+        <link rel="canonical" href="https://liquidata.dev" />
         
         {/* Preconnect */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

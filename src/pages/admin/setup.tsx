@@ -198,7 +198,7 @@ export default function AdminSetup() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full pl-12 pr-4 py-3 bg-[#1e1f26] border border-[#252630] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
-                    placeholder="admin@liquidata.com"
+                    placeholder="admin@liquidata.dev"
                     required
                   />
                 </div>

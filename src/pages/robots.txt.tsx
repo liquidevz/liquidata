@@ -12,7 +12,7 @@ Allow: /
 Disallow: /admin/
 Disallow: /api/
 
-Sitemap: https://liquidata.com/sitemap.xml
+Sitemap: https://liquidata.dev/sitemap.xml
 
 Crawl-delay: 0`;
     
@@ -28,7 +28,7 @@ Allow: /
 Disallow: /admin/
 Disallow: /api/
 
-Sitemap: https://liquidata.com/sitemap.xml`);
+Sitemap: https://liquidata.dev/sitemap.xml`);
     res.end();
   }
 

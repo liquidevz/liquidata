@@ -19,7 +19,7 @@ interface SEOHeadProps {
 export default function SEOHead({
   title = 'Liquidata - Modern Data Solutions',
   description = 'Transform your business with cutting-edge data analytics and AI-powered insights. Liquidata provides enterprise-grade data solutions.',
-  canonical = 'https://liquidata.com',
+  canonical = 'https://liquidata.dev',
   ogImage = '/og-image.jpg',
   ogType = 'website',
   twitterCard = 'summary_large_image',

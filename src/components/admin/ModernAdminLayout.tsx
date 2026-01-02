@@ -215,7 +215,7 @@ export const ModernAdminLayout: React.FC<ModernAdminLayoutProps> = ({ children, 
                   className="flex-1 min-w-0"
                 >
                   <p className="text-sm font-semibold text-white truncate">ADMIN</p>
-                  <p className="text-xs text-gray-500 truncate">admin@liquidata.com</p>
+                  <p className="text-xs text-gray-500 truncate">admin@liquidata.dev</p>
                 </motion.div>
               )}
             </AnimatePresence>

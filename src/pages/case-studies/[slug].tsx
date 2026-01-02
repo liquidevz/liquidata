@@ -528,10 +528,10 @@ export default function CaseStudyDetailPage() {
                 <span className="text-zinc-400 text-sm uppercase tracking-widest">OR</span>
                 
                 <a
-                  href="mailto:hello@liquidata.com"
+                  href="mailto:hello@liquidata.dev"
                   className="text-zinc-300 hover:text-white transition-colors text-lg underline"
                 >
-                  hello@liquidata.com
+                  hello@liquidata.dev
                 </a>
               </motion.div>
             </div>

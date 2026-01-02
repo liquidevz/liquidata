@@ -39,7 +39,7 @@ export default function Home() {
         title="Liquidata - Custom Software & Hardware Solutions | Data Analytics & AI"
         description="Transform your business with Liquidata's cutting-edge data analytics, AI-powered insights, and custom software & hardware solutions. Get accurate project estimates with our smart calculator. Expert development services worldwide."
         keywords="liquidata, custom software development, hardware solutions, data analytics, AI insights, business intelligence, web development, mobile app development, project calculator, enterprise solutions, software consulting, digital transformation"
-        canonical="https://liquidata.com"
+        canonical="https://liquidata.dev"
         structuredData={combinedStructuredData}
       />
       <main className={barlowFont.className}>

@@ -16,8 +16,8 @@ const barlowFont = Barlow({
 
 export default function Contact() {
   const breadcrumbs = breadcrumbStructuredData([
-    { name: 'Home', url: 'https://liquidata.com' },
-    { name: 'Contact', url: 'https://liquidata.com/contact' }
+    { name: 'Home', url: 'https://liquidata.dev' },
+    { name: 'Contact', url: 'https://liquidata.dev/contact' }
   ]);
 
   return (
@@ -26,7 +26,7 @@ export default function Contact() {
         title="Contact Us - Get in Touch with Liquidata | Software Development Experts"
         description="Contact Liquidata for custom software development, hardware solutions, data analytics, and AI services. Get in touch with our expert team today."
         keywords="contact liquidata, software development inquiry, custom development contact, business solutions, get quote, contact form"
-        canonical="https://liquidata.com/contact"
+        canonical="https://liquidata.dev/contact"
         structuredData={breadcrumbs}
       />
       <main className={barlowFont.className}>

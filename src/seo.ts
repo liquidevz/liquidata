@@ -1,17 +1,17 @@
 export const seoConfig = {
   title: 'Liquidata - Custom Software & Hardware Solutions | Data Analytics & AI',
   description: 'Transform your business with Liquidata. Expert custom software development, hardware solutions, data analytics, and AI-powered insights. Get accurate project estimates with our smart calculator.',
-  canonical: 'https://liquidata.com',
+  canonical: 'https://liquidata.dev',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://liquidata.com',
+    url: 'https://liquidata.dev',
     siteName: 'Liquidata',
     title: 'Liquidata - Custom Software & Hardware Solutions',
     description: 'Transform your business with cutting-edge data analytics, AI-powered insights, and custom software solutions.',
     images: [
       {
-        url: 'https://liquidata.com/og-image.jpg',
+        url: 'https://liquidata.dev/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Liquidata - Modern Data Solutions',
@@ -47,8 +47,8 @@ export const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Liquidata',
-  url: 'https://liquidata.com',
-  logo: 'https://liquidata.com/liquidata.svg',
+  url: 'https://liquidata.dev',
+  logo: 'https://liquidata.dev/liquidata.svg',
   description: 'Transform your business with cutting-edge data analytics, AI-powered insights, and custom software and hardware solutions.',
   foundingDate: '2020',
   sameAs: [
@@ -59,7 +59,7 @@ export const structuredData = {
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer service',
-    url: 'https://liquidata.com/contact',
+    url: 'https://liquidata.dev/contact',
     availableLanguage: ['English']
   },
   address: {
@@ -84,10 +84,10 @@ export const websiteStructuredData = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Liquidata',
-  url: 'https://liquidata.com',
+  url: 'https://liquidata.dev',
   potentialAction: {
     '@type': 'SearchAction',
-    target: 'https://liquidata.com/search?q={search_term_string}',
+    target: 'https://liquidata.dev/search?q={search_term_string}',
     'query-input': 'required name=search_term_string'
   }
 };
