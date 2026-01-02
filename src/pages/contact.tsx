@@ -2,6 +2,7 @@ import { ContactForm } from "@/components/contact/ContactForm";
 import { SocialLinks } from "@/components/contact/SocialLinks";
 import { Footer } from "@/components/footer/Footer";
 import SEOHead from "@/components/seo/SEOHead";
+import { breadcrumbStructuredData } from "@/seo";
 import { Barlow } from "next/font/google";
 import { motion } from "framer-motion";
 import { MaxWidthWrapper } from "@/components/utils/MaxWidthWrapper";
@@ -14,12 +15,19 @@ const barlowFont = Barlow({
 });
 
 export default function Contact() {
+  const breadcrumbs = breadcrumbStructuredData([
+    { name: 'Home', url: 'https://liquidata.com' },
+    { name: 'Contact', url: 'https://liquidata.com/contact' }
+  ]);
+
   return (
     <>
       <SEOHead
-        title="Contact Us - Liquidata"
-        description="Get in touch with Liquidata. Contact our team for software and hardware development services."
-        keywords="contact, software development, hardware solutions, custom development, business solutions"
+        title="Contact Us - Get in Touch with Liquidata | Software Development Experts"
+        description="Contact Liquidata for custom software development, hardware solutions, data analytics, and AI services. Get in touch with our expert team today."
+        keywords="contact liquidata, software development inquiry, custom development contact, business solutions, get quote, contact form"
+        canonical="https://liquidata.com/contact"
+        structuredData={breadcrumbs}
       />
       <main className={barlowFont.className}>
         <section className="relative pt-32 pb-8 md:pt-40 md:pb-20">

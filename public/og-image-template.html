@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquidata OG Image Generator</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #09090b 0%, #18181b 50%, #27272a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+        .grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(14, 165, 233, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(14, 165, 233, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        .content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 60px;
+            max-width: 900px;
+        }
+        .logo {
+            font-size: 48px;
+            font-weight: 900;
+            color: #0ea5e9;
+            margin-bottom: 40px;
+            letter-spacing: -2px;
+        }
+        h1 {
+            font-size: 72px;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+        p {
+            font-size: 32px;
+            color: #a1a1aa;
+            line-height: 1.4;
+            font-weight: 400;
+        }
+        .accent {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+        .accent-1 { top: -100px; left: -100px; }
+        .accent-2 { bottom: -100px; right: -100px; }
+    </style>
+</head>
+<body>
+    <div class="grid"></div>
+    <div class="accent accent-1"></div>
+    <div class="accent accent-2"></div>
+    <div class="content">
+        <div class="logo">LIQUIDATA</div>
+        <h1>Custom Software & Hardware Solutions</h1>
+        <p>Transform Your Business with AI & Data Analytics</p>
+    </div>
+</body>
+</html>

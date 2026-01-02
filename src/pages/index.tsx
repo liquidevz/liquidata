@@ -8,11 +8,10 @@ import { StandaloneHero } from "@/components/hero/StandaloneHero";
 import { Logos } from "@/components/logos/Logos";
 import { Pricing } from "@/components/pricing/Pricing";
 import SEOHead from "@/components/seo/SEOHead";
-import { structuredData } from "@/seo";
+import { structuredData, websiteStructuredData, serviceStructuredData } from "@/seo";
 import { event } from "@/lib/gtag";
 import { Barlow } from "next/font/google";
 import { useEffect } from "react";
-import { Content } from "@/components/hero/Content";
 
 const barlowFont = Barlow({
   subsets: ["latin"],
@@ -22,7 +21,6 @@ const barlowFont = Barlow({
 
 export default function Home() {
   useEffect(() => {
-    // Track page view
     event({
       action: 'page_view',
       category: 'engagement',
@@ -30,13 +28,19 @@ export default function Home() {
     });
   }, []);
 
+  const combinedStructuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [structuredData, websiteStructuredData, serviceStructuredData]
+  };
+
   return (
     <>
       <SEOHead
-        title="Liquidata - Modern Data Solutions & Custom Software Development"
-        description="Transform your business with cutting-edge data analytics, AI-powered insights, and custom software solutions. Get accurate project estimates with our smart calculator."
-        keywords="data analytics, AI insights, business intelligence, custom software development, web development, mobile apps, project calculator, enterprise solutions"
-        structuredData={structuredData}
+        title="Liquidata - Custom Software & Hardware Solutions | Data Analytics & AI"
+        description="Transform your business with Liquidata's cutting-edge data analytics, AI-powered insights, and custom software & hardware solutions. Get accurate project estimates with our smart calculator. Expert development services worldwide."
+        keywords="liquidata, custom software development, hardware solutions, data analytics, AI insights, business intelligence, web development, mobile app development, project calculator, enterprise solutions, software consulting, digital transformation"
+        canonical="https://liquidata.com"
+        structuredData={combinedStructuredData}
       />
       <main className={barlowFont.className}>
         <StandaloneHero
