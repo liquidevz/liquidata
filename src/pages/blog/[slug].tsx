@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Head from 'next/head';
+import SEOHead from '../../components/seo/SEOHead';
+import { breadcrumbStructuredData } from '../../seo';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
@@ -97,12 +98,59 @@ export default function BlogDetailPage() {
     );
   }
 
+  const articleStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: blog.title,
+    description: blog.excerpt,
+    image: blog.featuredImage || 'https://liquidata.com/og-image.jpg',
+    datePublished: blog.publishedAt,
+    dateModified: blog.publishedAt,
+    author: {
+      '@type': 'Person',
+      name: blog.author?.name || 'Liquidata Team'
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Liquidata',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://liquidata.com/liquidata.svg'
+      }
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://liquidata.com/blog/${blog.slug}`
+    },
+    keywords: blog.tags?.join(', '),
+    articleSection: blog.category,
+    wordCount: blog.content?.split(' ').length || 0
+  };
+
+  const breadcrumbs = breadcrumbStructuredData([
+    { name: 'Home', url: 'https://liquidata.com' },
+    { name: 'Blog', url: 'https://liquidata.com/blog' },
+    { name: blog.title, url: `https://liquidata.com/blog/${blog.slug}` }
+  ]);
+
+  const combinedStructuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [articleStructuredData, breadcrumbs]
+  };
+
   return (
     <>
-      <Head>
-        <title>{blog.title} | Liquidata Insights</title>
-        <meta name="description" content={blog.excerpt} />
-      </Head>
+      <SEOHead
+        title={`${blog.title} | Liquidata Blog`}
+        description={blog.excerpt}
+        keywords={`liquidata, ${blog.category}, ${blog.tags?.join(', ')}, software development, tech article`}
+        canonical={`https://liquidata.com/blog/${blog.slug}`}
+        ogImage={blog.featuredImage || 'https://liquidata.com/og-image.jpg'}
+        ogType="article"
+        publishedTime={blog.publishedAt}
+        modifiedTime={blog.publishedAt}
+        structuredData={combinedStructuredData}
+      />
 
       <main className={barlowFont.className}>
         {/* Back Navigation */}

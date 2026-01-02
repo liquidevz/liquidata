@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Head from 'next/head';
+import SEOHead from '../../components/seo/SEOHead';
+import { breadcrumbStructuredData } from '../../seo';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { publicFetch } from '../../utils/adminApi';
@@ -77,10 +78,16 @@ export default function BlogPage() {
 
   return (
     <>
-      <Head>
-        <title>Insights - Blog & Articles | Liquidata</title>
-        <meta name="description" content="Latest insights, tutorials, and industry trends from our team of experts." />
-      </Head>
+      <SEOHead
+        title="Blog & Insights - Latest Articles on Software Development | Liquidata"
+        description="Explore expert insights, tutorials, and industry trends on custom software development, data analytics, AI, and technology solutions from Liquidata."
+        keywords="liquidata blog, software development articles, tech insights, data analytics tutorials, AI articles, web development blog, technology trends"
+        canonical="https://liquidata.com/blog"
+        structuredData={breadcrumbStructuredData([
+          { name: 'Home', url: 'https://liquidata.com' },
+          { name: 'Blog', url: 'https://liquidata.com/blog' }
+        ])}
+      />
 
       <main className={barlowFont.className}>
         {/* Hero Section - Ochi Insights Style */}

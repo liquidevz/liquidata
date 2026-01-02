@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Head from 'next/head';
+import SEOHead from '../../components/seo/SEOHead';
+import { breadcrumbStructuredData } from '../../seo';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { publicFetch } from '../../utils/adminApi';
@@ -81,10 +82,16 @@ export default function CaseStudiesPage() {
 
   return (
     <>
-      <Head>
-        <title>Work - Case Studies | Liquidata</title>
-        <meta name="description" content="Purpose driven, strategy-led projects that people care about. Explore our portfolio of successful case studies." />
-      </Head>
+      <SEOHead
+        title="Case Studies - Our Work & Client Success Stories | Liquidata"
+        description="Explore Liquidata's portfolio of successful software development projects. Purpose-driven, strategy-led solutions across industries."
+        keywords="liquidata case studies, software development portfolio, client success stories, project showcase, web development projects, mobile app case studies"
+        canonical="https://liquidata.com/case-studies"
+        structuredData={breadcrumbStructuredData([
+          { name: 'Home', url: 'https://liquidata.com' },
+          { name: 'Case Studies', url: 'https://liquidata.com/case-studies' }
+        ])}
+      />
 
       <main className={barlowFont.className}>
         {/* Hero Section - Ochi Style */}

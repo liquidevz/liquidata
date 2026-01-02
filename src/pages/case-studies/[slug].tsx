@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Head from 'next/head';
+import SEOHead from '../../components/seo/SEOHead';
+import { breadcrumbStructuredData } from '../../seo';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
@@ -106,12 +107,50 @@ export default function CaseStudyDetailPage() {
     );
   }
 
+  const projectStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: caseStudy.title,
+    description: caseStudy.excerpt,
+    image: caseStudy.featuredImage || 'https://liquidata.com/og-image.jpg',
+    datePublished: caseStudy.publishedAt,
+    author: {
+      '@type': 'Organization',
+      name: 'Liquidata'
+    },
+    creator: {
+      '@type': 'Organization',
+      name: 'Liquidata'
+    },
+    about: {
+      '@type': 'Thing',
+      name: caseStudy.industry
+    },
+    keywords: caseStudy.technologies?.join(', ')
+  };
+
+  const breadcrumbs = breadcrumbStructuredData([
+    { name: 'Home', url: 'https://liquidata.com' },
+    { name: 'Case Studies', url: 'https://liquidata.com/case-studies' },
+    { name: caseStudy.title, url: `https://liquidata.com/case-studies/${caseStudy.slug}` }
+  ]);
+
+  const combinedStructuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [projectStructuredData, breadcrumbs]
+  };
+
   return (
     <>
-      <Head>
-        <title>{caseStudy.title} - {caseStudy.client} | Liquidata</title>
-        <meta name="description" content={caseStudy.excerpt} />
-      </Head>
+      <SEOHead
+        title={`${caseStudy.title} - ${caseStudy.client} Case Study | Liquidata`}
+        description={caseStudy.excerpt}
+        keywords={`liquidata, ${caseStudy.client}, ${caseStudy.industry}, ${caseStudy.projectType}, ${caseStudy.technologies?.join(', ')}, case study`}
+        canonical={`https://liquidata.com/case-studies/${caseStudy.slug}`}
+        ogImage={caseStudy.featuredImage || 'https://liquidata.com/og-image.jpg'}
+        publishedTime={caseStudy.publishedAt}
+        structuredData={combinedStructuredData}
+      />
 
       <main className={barlowFont.className}>
         {/* Back Navigation */}
