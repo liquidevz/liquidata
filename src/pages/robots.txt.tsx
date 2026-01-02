@@ -6,14 +6,29 @@ const RobotsTxt = () => null;
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   try {
     const seoConfig = await publicFetch('/api/seo-config');
-    const robotsTxt = seoConfig?.robotsTxt || 'User-agent: *\nAllow: /';
+    const baseRobots = seoConfig?.robotsTxt || `# Liquidata Robots.txt
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://liquidata.com/sitemap.xml
+
+Crawl-delay: 0`;
     
     res.setHeader('Content-Type', 'text/plain');
-    res.write(robotsTxt);
+    res.setHeader('Cache-Control', 'public, max-age=3600, must-revalidate');
+    res.write(baseRobots);
     res.end();
   } catch (error) {
     res.setHeader('Content-Type', 'text/plain');
-    res.write('User-agent: *\nAllow: /');
+    res.write(`# Liquidata Robots.txt
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://liquidata.com/sitemap.xml`);
     res.end();
   }
 

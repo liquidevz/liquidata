@@ -1,5 +1,6 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import { structuredData, websiteStructuredData, serviceStructuredData } from "../seo";
+import Script from "next/script";
 
 export default function Document() {
   return (
@@ -72,24 +73,17 @@ export default function Document() {
             __html: JSON.stringify(serviceStructuredData),
           }}
         />
-        
-        {/* Viewport Zoom for Desktop Only */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if (window.innerWidth >= 1024) {
-                document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=0.9');
-              }
-            `,
-          }}
-        />
-        
-        {/* Google Analytics */}
-        <script
-          async
+      </Head>
+      <body className="bg-zinc-950 text-zinc-200 selection:bg-zinc-600">
+        <Main />
+        <NextScript />
+        <Script
+          strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-4W3WHHYRT3"
         />
-        <script
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -102,10 +96,6 @@ export default function Document() {
             `,
           }}
         />
-      </Head>
-      <body className="bg-zinc-950 text-zinc-200 selection:bg-zinc-600">
-        <Main />
-        <NextScript />
       </body>
     </Html>
   );
